@@ -1,0 +1,51 @@
+{
+  "name": "vscode-nationbuilder-liquid",
+  "displayName": "NationBuilder Liquid",
+  "description": "Go-to-definition navigation for {% include %} and {% subpage %} tags in a NationBuilder theme codebase.",
+  "version": "1.0.0",
+  "publisher": "pjpscriv",
+  "icon": "docs/logo-256.png",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pjpscriv/vscode-nationbuilder-liquid"
+  },
+  "engines": {
+    "vscode": "^1.120.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "nationbuilder",
+    "liquid",
+    "include",
+    "subpage",
+    "template"
+  ],
+  "activationEvents": ["onLanguage:liquid"],
+  "main": "./out/extension.js",
+  "contributes": {
+    "languages": []
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test",
+    "package": "npx vsce package"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.120.0",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "22.x",
+    "typescript-eslint": "^8.56.1",
+    "eslint": "^9.39.3",
+    "typescript": "^5.9.3",
+    "@vscode/test-cli": "^0.0.12",
+    "@vscode/test-electron": "^2.5.2",
+    "@vscode/vsce": "^3.0.0"
+  }
+}
