@@ -2,7 +2,7 @@
 
 The development experience for NationBuilder templates has comparitively sparse tooling. This extension is a first attempt to remedy that.  
 
-This is a VS Code extension that adds go-to-definition navigation for `{% include %}` and `{% subpage %}` tags in a NationBuilder Liquid theme codebase.
+This is a VS Code extension that adds go-to-definition navigation for `{% include %}`, `{% subpage %}`, and `{% tag %}` tags in a NationBuilder Liquid theme codebase.
 
 ## Features
 
@@ -20,9 +20,15 @@ Ctrl+Clicking on `my_rad_component` opens `_my_rad_component.html`, wherever it 
 
 Ctrl+Clicking on `my_incredible_subpage` opens `_my_incredible_subpage.html` the same way.
 
+```liquid
+{% tag thing with "my_awesome_tag" %}
+```
+
+Ctrl+Clicking on `my_awesome_tag` opens `_my_awesome_tag.html` the same way.
+
 ## Usage
 
-With the extension installed, open any Liquid template file and Ctrl+Click on the quoted name inside an `{% include %}` or `{% subpage %}` statement.
+With the extension installed, open any Liquid template file and Ctrl+Click on the quoted name inside an `{% include %}`, `{% subpage %}`, or `{% tag %}` statement.
 
 <details>
   <summary><b>File Resolution</b></summary>
@@ -46,8 +52,7 @@ Your workspace should have `.html` files associated with the Liquid language. Ad
 
 Ideas for future versions:
 
-- Support navigation for `{% tag %}` blocks
-- "Find usages" for includes and subpages
+- "Find usages" for includes, subpages, and tags
 - Autocompletion for NationBuilder Liquid objects ([reference](https://nationbuilder.com/liquid))
 - Autocompletion for `{% include %}` file names
 

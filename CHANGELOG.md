@@ -6,6 +6,10 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## [Unreleased]
 
+## [1.1.0]
+
+- Added go-to-definition support for `{% tag thing with "name" %}` tags (resolves to `_name.html`, same convention as `subpage`)
+
 ## [1.0.0]
 
 - Renamed extension to "NationBuilder Liquid" (`vscode-nationbuilder-liquid`) ahead of first Marketplace publish

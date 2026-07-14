@@ -1,8 +1,8 @@
 {
   "name": "vscode-nationbuilder-liquid",
   "displayName": "NationBuilder Liquid",
-  "description": "Go-to-definition navigation for {% include %} and {% subpage %} tags in a NationBuilder theme codebase.",
-  "version": "1.0.0",
+  "description": "Go-to-definition navigation for {% include %}, {% subpage %}, and {% tag %} tags in a NationBuilder theme codebase.",
+  "version": "1.1.0",
   "publisher": "pjpscriv",
   "icon": "docs/logo-256.png",
   "license": "MIT",
@@ -21,6 +21,7 @@
     "liquid",
     "include",
     "subpage",
+    "tag",
     "template"
   ],
   "activationEvents": ["onLanguage:liquid"],

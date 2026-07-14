@@ -21,6 +21,12 @@ const LIQUID_TAGS: LiquidTag[] = [
         pattern: /\{%-?\s*subpage\s+\S+\s+with\s+['"]([^'"]+)['"]/g,
         resolveFilename: (name) => `_${name}.html`,
     },
+    {
+        // Matches the tag name from:
+        // {% tag thing with "name" %}
+        pattern: /\{%-?\s*tag\s+\S+\s+with\s+['"]([^'"]+)['"]/g,
+        resolveFilename: (name) => `_${name}.html`,
+    },
 ];
 
 export function activate(context: vscode.ExtensionContext) {
