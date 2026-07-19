@@ -6,6 +6,10 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## [Unreleased]
 
+## [1.2.0]
+
+- Added "N usages" CodeLens above partials (files matching `_name.html`), showing every `{% include %}`, `{% subpage %}`, and `{% tag %}` reference to that partial across the workspace via the built-in Peek References view
+
 ## [1.1.0]
 
 - Added go-to-definition support for `{% tag thing with "name" %}` tags (resolves to `_name.html`, same convention as `subpage`)

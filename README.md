@@ -2,29 +2,25 @@
 
 The development experience for NationBuilder templates has comparitively sparse tooling. This extension is a first attempt to remedy that.  
 
-This is a VS Code extension that adds go-to-definition navigation for `{% include %}`, `{% subpage %}`, and `{% tag %}` tags in a NationBuilder Liquid theme codebase.
+This is a VS Code extension that adds go-to-definition and find-usages navigation for `{% include %}`, `{% subpage %}`, and `{% tag %}` tags in a NationBuilder Liquid theme codebase.
 
 ## Features
+
+### Go to Definition
 
 Ctrl+Click (or Cmd+Click on macOS) on a quoted name inside a supported tag to jump directly to the referenced file.
 
 ```liquid
-{% include "my_rad_component" %}
+{% include "my_rad_template" %}
+{% subpage thing with "my_rad_template" %}
+{% tag tag_name with "my_rad_template" %}
 ```
 
-Ctrl+Clicking on `my_rad_component` opens `_my_rad_component.html`, wherever it lives in your workspace.
+Ctrl+Clicking on `my_rad_template` in any of these opens `_my_rad_template.html`, wherever it lives in your workspace.
 
-```liquid
-{% subpage thing with "my_incredible_subpage" %}
-```
+### Find Usages
 
-Ctrl+Clicking on `my_incredible_subpage` opens `_my_incredible_subpage.html` the same way.
-
-```liquid
-{% tag thing with "my_awesome_tag" %}
-```
-
-Ctrl+Clicking on `my_awesome_tag` opens `_my_awesome_tag.html` the same way.
+Every partial (any file named `_<name>.html`) shows a "N usages" CodeLens above the first line, listing every `{% include %}`, `{% subpage %}`, and `{% tag %}` that references it, anywhere in the workspace. Click it to open a Peek References panel and jump straight to any usage.
 
 ## Usage
 
@@ -52,7 +48,6 @@ Your workspace should have `.html` files associated with the Liquid language. Ad
 
 Ideas for future versions:
 
-- "Find usages" for includes, subpages, and tags
 - Autocompletion for NationBuilder Liquid objects ([reference](https://nationbuilder.com/liquid))
 - Autocompletion for `{% include %}` file names
 
