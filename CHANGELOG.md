@@ -1,10 +1,14 @@
 # Change Log
 
-All notable changes to the "NationBuilder Liquid" extension (formerly "Liquid Include Navigator") will be documented in this file.
+All notable changes to the "NationBuilder Liquid" extension will be documented in this file.
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
-## [Unreleased]
+## [1.3.0]
+
+- Added autocompletion and hover documentation for NationBuilder Liquid objects (e.g. `page.basic.content`), sourced from a scraped copy of the [Liquid object reference](https://nationbuilder.com/liquid)
+- Fixed go-to-definition not resolving tags when the opening `{%` is on a different line to the tag name (e.g. `{%\n  tag thing with "name"\n%}`)
+- Refactored the extension into separate modules instead of a single `extension.ts` file
 
 ## [1.2.0]
 

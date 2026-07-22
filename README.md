@@ -50,6 +50,7 @@ Ideas for future versions:
 
 - Autocompletion for NationBuilder Liquid objects ([reference](https://nationbuilder.com/liquid))
 - Autocompletion for `{% include %}` file names
+- Find usages and go-to-definition for Liquid variables
 
 ## Contributing
 

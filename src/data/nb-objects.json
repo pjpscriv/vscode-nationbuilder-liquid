@@ -1,0 +1,4957 @@
+{
+  "account": {
+    "slug": "account_variables",
+    "title": "Account variables",
+    "properties": {
+      "email": {
+        "description": "Users email, if available",
+        "example": "e.g. {{ account.email }}"
+      }
+    }
+  },
+  "activation": {
+    "slug": "activation_variables",
+    "title": "Activation variables",
+    "properties": {
+      "first_name": {
+        "description": "Input field for first name",
+        "example": "e.g. {% text_field \"first_name\", class:\"text\" % %}"
+      },
+      "last_name": {
+        "description": "Input field for last name",
+        "example": "e.g. {% text_field \"last_name\", class:\"text\" %}"
+      },
+      "activation_code": {
+        "description": "Unique activation code passed through activation form",
+        "example": "e.g. <input type=\"hidden\" name=\"activation[activation_code]\" value=\"{{ activation.activation_code }}\" />"
+      },
+      "submitted_address": {
+        "description": "Input field for address",
+        "example": "e.g. {% text_field \"submitted_address\", class:\"text\" %}"
+      },
+      "password": {
+        "description": "Input field for password",
+        "example": "e.g. {% password_field \"password\", class:\"text\" %}"
+      },
+      "password_confirmation": {
+        "description": "Input field for password confirmation",
+        "example": "e.g. {% password_field \"password_confirmation\", class:\"text\" %}"
+      },
+      "is_address_needed": {
+        "description": "Checks if address is required for activation",
+        "example": "e.g. {% if activation.is_address_needed %}"
+      },
+      "is_mobile_needed": {
+        "description": "Checks if a mobile phone is required for activation",
+        "example": "e.g. {% if activation.is_mobile_needed %}"
+      },
+      "mobile_number": {
+        "description": "Input field for mobile phone number",
+        "example": "e.g. {% text_field \"mobile_number\", class:\"text\" %}"
+      },
+      "mobile_opt_in": {
+        "description": "Checkbox for text message opt-in",
+        "example": "e.g. {% check_box \"mobile_opt_in\", class:\"check_box\" %}"
+      }
+    }
+  },
+  "activity": {
+    "slug": "activity_variables",
+    "title": "Activity variables",
+    "properties": {
+      "created_at": {
+        "description": "When the activity was created",
+        "example": "e.g. {{ activity.created_at | time_ago }}"
+      },
+      "data": {
+        "description": "The activity data",
+        "example": "e.g. {{ activity.data.donation.amount }}"
+      },
+      "is_private?": {
+        "description": "Checks if the activity is private",
+        "example": "e.g. <![CDATA[ {% if activity.is_private? %} <img src=\"/images/icons/lock.gif\"> {% endif %} ]]>"
+      },
+      "is_public?": {
+        "description": "Checks if the activity is public",
+        "example": "e.g. <![CDATA[ {% if activity.is_public? %} <span class=\"activity_links\"> &middot; <a href=\"{{ activity.admin_comment_url }}\" id=\"activity_comment_{{ activity.id }}\" class=\"get\">Comment</a> &middot; <a href=\"{{ activity.admin_like_url }}\" id=\"activity_like_{{ activity.id }}\" class=\"get\">Like</a> </span> {% endif %} ]]>"
+      },
+      "type_name": {
+        "description": "The type of item the activity is for",
+        "example": "e.g. \"Donation\" or \"Twitter Follower\""
+      },
+      "amount_format": {
+        "description": "Amount formatted in dollars cents",
+        "example": "e.g. $100.00"
+      },
+      "amount_in_cents": {
+        "description": "Amount formatted in cents",
+        "example": "e.g. 10000"
+      },
+      "broadcaster": {
+        "description": "Broadcaster referenced",
+        "example": "e.g. {{ activity.author.published_name_linked }} called {{ activity.broadcaster.name }}"
+      },
+      "signup": {
+        "description": "Identity of signup involved in the activity",
+        "example": "e.g. {{ activity.signup.name_or_email }}"
+      },
+      "author": {
+        "description": "Author of item activity is attached to (comment, suggestion, etc.)",
+        "example": "e.g. {{ activity.author.name_or_email }}"
+      },
+      "show_page_view": {
+        "description": "Extended format for activity view (most common)",
+        "example": "e.g. {{ activity.show_page_view }}"
+      },
+      "show_oneliner_view": {
+        "description": "Abbreviated format for activity view",
+        "example": "e.g. {{ activity.show_oneliner_view }}"
+      }
+    }
+  },
+  "address": {
+    "slug": "address_variables",
+    "title": "Address variables",
+    "properties": {
+      "address1": {
+        "description": "Street address (line 1)",
+        "example": "e.g. 125 Main St."
+      },
+      "address2": {
+        "description": "Street address (line 2)",
+        "example": "e.g. Apartment 4R"
+      },
+      "city": {
+        "description": "City",
+        "example": "e.g. Witchita"
+      },
+      "state": {
+        "description": "State",
+        "example": "e.g. Kansas"
+      },
+      "zip": {
+        "description": "Postal code",
+        "example": "e.g. 67201"
+      },
+      "county": {
+        "description": "County",
+        "example": "e.g. Sedgwick"
+      },
+      "location": {
+        "description": "A display friendly location, better than city_and_state, more internationally aware",
+        "example": "London, UK"
+      },
+      "city_and_state": {
+        "description": "City and State",
+        "example": "e.g. Witchita, Kansas"
+      },
+      "country_code": {
+        "description": "Country Code (ISO alpha-2)",
+        "example": "e.g. US"
+      },
+      "phone_number": {
+        "description": "Phone number",
+        "example": "e.g. 323-963-4308"
+      },
+      "work_phone_number": {
+        "description": "Work phone number",
+        "example": "e.g. 323-555-1212"
+      },
+      "multi_line": {
+        "description": "Display address in multiple lines",
+        "example": "e.g. <![CDATA[ {% if event_rsvp.event.is_location? %} {% for line in event_rsvp.event.venue_address.multi_line %} {{ line }}<br/> {% endfor %} ]]>"
+      },
+      "one_line": {
+        "description": "Display address in one line",
+        "example": "e.g. {{ donation.billing_address.one_line }}"
+      },
+      "geocode_accuracy": {},
+      "geocode_precision": {},
+      "gmaps_zoom_level": {},
+      "map_view_html": {},
+      "google_map_link": {
+        "description": "Google Map link for address",
+        "example": "e.g. <![CDATA[ <a href=\"{{ event_rsvp.event.venue_address.google_map_link }}\">Map and directions</a><br/> ]]>"
+      },
+      "yahoo_map_link": {
+        "description": "Yahoo Map link for address",
+        "example": "e.g. <![CDATA[ <a href=\"{{ event_rsvp.event.venue_address.yahoo_map_link }}\">Map and directions</a><br/> ]]>"
+      },
+      "lat": {
+        "description": "Latitude"
+      },
+      "lng": {
+        "description": "Longitude"
+      },
+      "distance": {},
+      "suggested_bounds": {},
+      "fips": {}
+    },
+    "description": "Address variables are part of an address array. They are written as address_type.address_attribute, e.g. home_address.address1. These variables can be displayed or requested on event, petition, signup, and volunter signup pages with three address types: home (prefix is home_address), work (prefix is work_address), and mailing (prefix is mailing_address). The billing address (prefix is billing_address) can be requested on donation, event, invoice, petition, and volunteer signup pages. The primary address can be displayed using prefix 'address.' Since primary address refers to a particular type of address, it is read-only. Variable Description address1Street address (line 1) e.g. 125 Main St. address2Street address (line 2) e.g. Apartment 4R cityCity e.g. Witchita stateState e.g. Kansas zipPostal code e.g. 67201 countyCounty e.g. Sedgwick locationA display friendly location, better than city_and_state, more internationally aware London, UK city_and_stateCity and State e.g. Witchita, Kansas country_codeCountry Code (ISO alpha-2) e.g. US phone_numberPhone number e.g. 323-963-4308 work_phone_numberWork phone number e.g. 323-555-1212 multi_lineDisplay address in multiple lines e.g. <![CDATA[ {% if event_rsvp.event.is_location? %} {% for line in event_rsvp.event.venue_address.multi_line %} {{ line }}<br/> {% endfor %} ]]> one_lineDisplay address in one line e.g. {{ donation.billing_address.one_line }} geocode_accuracy geocode_precision gmaps_zoom_level map_view_html google_map_linkGoogle Map link for address e.g. <![CDATA[ <a href=\"{{ event_rsvp.event.venue_address.google_map_link }}\">Map and directions</a><br/> ]]> yahoo_map_linkYahoo Map link for address e.g. <![CDATA[ <a href=\"{{ event_rsvp.event.venue_address.yahoo_map_link }}\">Map and directions</a><br/> ]]> latLatitude lngLongitude distance suggested_bounds fips"
+  },
+  "broadcaster": {
+    "slug": "broadcaster_variables",
+    "title": "Broadcaster variables",
+    "properties": {
+      "name": {
+        "example": "e.g. {{ broadcaster.name }}"
+      },
+      "name_with_email": {
+        "example": "e.g. {{ broadcaster.name_with_email}}"
+      },
+      "email": {
+        "example": "e.g. {{ broadcaster.email }}"
+      },
+      "phone_number": {
+        "example": "e.g. {{ broadcaster.phone_number }}"
+      },
+      "profile_image_url": {
+        "description": "Uses either Twitter or Facebook Page profile image url",
+        "example": "e.g. {{ broadcaster.profile_image_url }}"
+      },
+      "has_facebook?": {
+        "description": "Checks if the broadcaster has a Facebook page",
+        "example": "e.g. {% if broadcaster.has_facebook? %}{% endif %}"
+      },
+      "facebook_page_username": {
+        "description": "Facebook page username",
+        "example": "e.g. {{ broadcaster.facebook_page_username }}"
+      },
+      "facebook_page_profile_url": {
+        "description": "Facebook page profile URL",
+        "example": "e.g. {{ broadcaster.facebook_page_profile_url }}"
+      },
+      "facebook_page_profile_image_url": {
+        "description": "Faecbook page image URL",
+        "example": "e.g. {{ broadcaster.facebook_page_profile_image_url }}"
+      },
+      "facebook_page_bigger_profile_image_url": {
+        "description": "Bigger Facebook page image URL",
+        "example": "e.g. {{ broadcaster.facebook_page_bigger_profile_image_url }}"
+      },
+      "facebook_likes_count": {
+        "description": "# of likes for this broadcaster on Facebook",
+        "example": "e.g. {{ broadcaster.facebook_likes_count }}"
+      },
+      "has_open_graph?": {
+        "description": "Checks if broadcaster has open graph",
+        "example": "e.g. {% if broadcaster.has_open_graph? %}{% endif %}"
+      },
+      "open_graph_type": {
+        "description": "Open Graph Type",
+        "example": "e.g. \"non_profit\", \"politician\", \"website\", etc."
+      },
+      "open_graph_site": {
+        "description": "The primary site for this open graph object",
+        "example": "e.g. {{ broadcaster.open_graph_site.full_url }}",
+        "type": "site"
+      }
+    }
+  },
+  "capital": {
+    "slug": "capital_variables",
+    "title": "Capital variables",
+    "properties": {
+      "receiver": {
+        "description": "Signup object of the receiver",
+        "type": "signup"
+      },
+      "receiver_id": {
+        "description": "Users Political Capital receiver id number",
+        "example": "e.g. {{ capital.receiver_id }}"
+      },
+      "spender": {
+        "description": "Signup object of the spender",
+        "type": "signup"
+      },
+      "spender_id": {
+        "description": "Users Political Capital spending id number",
+        "example": "e.g. {{ capital.spender_id }}"
+      },
+      "amount": {},
+      "amount_format": {
+        "description": "Total Political Capital amount",
+        "example": "e.g. {{ capital.amount_format }}"
+      },
+      "amount_in_cents": {},
+      "amount_spent": {},
+      "amount_spent_format": {
+        "description": "Amount of Political Capital spent",
+        "example": "e.g. {{ capital.amount_spent_format }}"
+      },
+      "amount_spent_in_cents": {},
+      "has_activity?": {
+        "description": "Checks if there is any Political Capital activity"
+      },
+      "activity": {
+        "description": "Political Capital activity",
+        "example": "e.g. {{ capital.activity.show_oneliner_view }}"
+      },
+      "created_at": {
+        "description": "Political Capital activity time stamp",
+        "example": "e.g. {{ capital.created_at | date_to_string }}"
+      },
+      "description": {
+        "description": "One line summary of what the pc was for"
+      }
+    }
+  },
+  "comment": {
+    "slug": "comment_variables",
+    "title": "Comment variables",
+    "properties": {
+      "signup": {
+        "description": "Author of the comment",
+        "example": "e.g. {{ comment.signup.published_name }}",
+        "type": "signup"
+      },
+      "activity": {
+        "description": "Activity on comment",
+        "example": "e.g. {{ comment.activity }}"
+      },
+      "content": {
+        "description": "Content of commment",
+        "example": "e.g. {{ comment.content }}"
+      },
+      "content_html": {
+        "description": "Content of comment, including HTML",
+        "example": "e.g. {{ comment.content_html }}"
+      },
+      "flag_url": {
+        "description": "URL to flag this comment"
+      },
+      "has_rule_violation?": {
+        "description": "Did the comment receive a rule violation?",
+        "example": "e.g. {% if comment.has_rule_violation? %}"
+      }
+    }
+  },
+  "consent_form": {
+    "slug": "consent_form_variables",
+    "title": "consent_form",
+    "properties": {
+      "consent_form?": {
+        "description": "Checks if the page has a consent form",
+        "example": "e.g. {% if page.show_consent_form? %}"
+      },
+      "headline": {
+        "description": "The consent form headline",
+        "example": "e.g. {{ page.consent_form.headline }}"
+      },
+      "content": {
+        "description": "Array of consent options",
+        "example": "e.g. <![CDATA[ {% for consent_option in page.consent_form.consent_options %} <div class=\"row-fluid consent-form__option\"> <div class=\"span12 col-12\"> <p>{{consent_option.description}}</p> <label for=\"{{consent_option.yes_radio_name}}\" class=\"radio\"> {{consent_option.yes_radio_button}} Yes </label> <label for=\"{{consent_option.no_radio_name}}\" class=\"radio\"> {{consent_option.no_radio_button}} No </label> </div> </div> {% endfor %} ]]>"
+      },
+      "description": {
+        "description": "The consent option description",
+        "example": "e.g. {{ consent_option.description }}"
+      },
+      "yes_radio_button": {
+        "description": "The opt-in radio option",
+        "example": "e.g. {{ consent_option.yes_radio_button }}"
+      },
+      "yes_radio_name": {
+        "description": "The opt-in radio option name",
+        "example": "e.g. {{ consent_option.yes_radio_name }}"
+      },
+      "no_radio_button": {
+        "description": "The opt-out radio option",
+        "example": "e.g. {{ consent_option.yes_radio_button }}"
+      },
+      "no_radio_name": {
+        "description": "The opt-out radio option name",
+        "example": "e.g. {{ consent_option.yes_radio_name }}"
+      }
+    }
+  },
+  "donation": {
+    "slug": "donation_variables",
+    "title": "Donation variables",
+    "properties": {
+      "first_name": {
+        "description": "Donor first name",
+        "example": "e.g. <![CDATA[ <label for=\"donation_first_name\">First Name</label> <br /> {% text_field \"first_name\", class:\"text\" %} ]]>"
+      },
+      "last_name": {
+        "description": "Donor last name",
+        "example": "e.g. {% text_field \"last_name\", class:\"text\" %}"
+      },
+      "email": {
+        "description": "Donor email address",
+        "example": "e.g. {% text_field \"email\", class:\"text\" %}"
+      },
+      "name": {
+        "description": "Donor first and last name combined",
+        "example": "e.g. {{ donation.name }}"
+      },
+      "employer": {
+        "description": "Donor employer",
+        "example": "e.g. {% text_field \"employer\", class:\"text\" %}"
+      },
+      "occupation": {
+        "description": "Donor occupation",
+        "example": "e.g. {% text_field \"occupation\", class:\"text\" %}"
+      },
+      "submitted_address": {
+        "description": "Donor address",
+        "example": "e.g. {{ donation.submitted_address"
+      },
+      "currency": {
+        "description": "Currency of donation",
+        "example": "e.g. $"
+      },
+      "card_number": {
+        "description": "Donor credit card number",
+        "example": "e.g. {% text_field \"card_number\", class:\"text\" %}"
+      },
+      "card_verification": {
+        "description": "Donor card verification number",
+        "example": "e.g. {% text_field \"card_number_verification\", class:\"text\" %}"
+      },
+      "card_expires_on": {
+        "description": "Donor credit card expiration",
+        "example": "e.g. {% text_field \"card_expires_on\", class:\"text\" %}"
+      },
+      "amount_option_in_cents": {},
+      "amount_in_cents": {
+        "description": "Donation amount in cents",
+        "example": "e.g. 1000"
+      },
+      "amount_format": {
+        "description": "Donation amount as text with currency",
+        "example": "e.g. $10.00"
+      },
+      "payment_type_name": {
+        "description": "Type of payment",
+        "example": "e.g. {{ donation.payment_type_name }}"
+      },
+      "email_opt_in": {
+        "description": "Email opt in check box",
+        "example": "e.g. {% check_box \"email_opt_in\", class:\"checkbox\" %}"
+      },
+      "is_private?": {
+        "description": "Checks if the donation is private",
+        "example": "e.g. {% if donation.is.private? %}"
+      },
+      "is_confirmed?": {
+        "description": "Checks if donor meets eligibility requirements",
+        "example": "e.g. {% if donation.is_confirmed? %}"
+      },
+      "succeeded_at": {
+        "description": "Time of successful donation",
+        "example": "e.g. {{ donation.succeeded_at | date_to_string }}"
+      },
+      "recruiter": {
+        "description": "Recruiter of donor",
+        "example": "e.g. {{ donation.recruiter }}"
+      },
+      "recruiter_id": {
+        "description": "Recruiter id number",
+        "example": "e.g. {{ donation.recruiter_id }}"
+      },
+      "is_recurring": {
+        "description": "Checks if the donation is part of a recurring donation",
+        "example": "e.g. {{ donation.is_recurring %}}"
+      },
+      "tracking_code_slug": {
+        "description": "The donation tracking code slug"
+      }
+    }
+  },
+  "election": {
+    "slug": "election_variables",
+    "title": "Election variables",
+    "properties": {
+      "election_at": {
+        "description": "Election date",
+        "example": "e.g. {{ settings.election.election_at | date: '%B %d, %Y' }}"
+      },
+      "days_until": {
+        "description": "Days until the election",
+        "example": "e.g. {{ settings.election.election_at | days_until }}"
+      },
+      "seconds_until": {
+        "description": "Seconds until the election",
+        "example": "e.g. {{ settings.election.election_at | seconds_until }}"
+      },
+      "cycle": {
+        "description": "The election cycle"
+      },
+      "period": {
+        "description": "The election period"
+      },
+      "donation_max": {
+        "description": "Is a donation max set?",
+        "example": "Boolean"
+      },
+      "donation_max_amount": {
+        "description": "The donation max (in cents)"
+      }
+    }
+  },
+  "endorsement": {
+    "slug": "endorsement_variables",
+    "title": "Endorsement variables",
+    "properties": {
+      "signup": {
+        "description": "Person endorsing",
+        "type": "signup"
+      },
+      "is_organization?": {
+        "description": "Is this an organization endorsing?"
+      },
+      "is_featured?": {
+        "description": "Is this endorsement featured?"
+      },
+      "content": {
+        "description": "Comment left with endorsement"
+      },
+      "has_image?": {
+        "description": "Is there an image on this endorsement?"
+      },
+      "image_url": {
+        "description": "URL to image as it was uploaded"
+      },
+      "image_height": {
+        "description": "Height of uploaded image"
+      },
+      "image_width": {
+        "description": "Width of uploaded image"
+      },
+      "medium_image_url": {
+        "description": "URL cropped to 73px wide or 73px high, whichever is greater, but keeping original aspect ratio"
+      },
+      "medium_square_image_url": {
+        "description": "URL to 73x73 square image"
+      },
+      "large_image_url": {
+        "description": "URL cropped to 140px wide or 140px high, whichever is greater, but keeping original aspect ratio"
+      },
+      "large_square_image_url": {
+        "description": "URL to 140x140 square image"
+      }
+    }
+  },
+  "event_host": {
+    "slug": "event_host_variables",
+    "title": "Event host variables",
+    "properties": {
+      "page": {
+        "type": "page"
+      },
+      "event": {
+        "type": "page.event"
+      },
+      "signup": {
+        "description": "Person who RSVP'ed",
+        "type": "signup"
+      },
+      "name": {
+        "description": "First and last name of event host",
+        "example": "e.g. {{ event_host.name }}"
+      },
+      "first_name": {
+        "description": "Input field for first name of event host",
+        "example": "e.g. {% text_field \"first_name\", class:\"text\" %}"
+      },
+      "last_name": {
+        "description": "Input field for last name of event host",
+        "example": "e.g. {% text_field \"last_name\", class:\"text\" %}"
+      },
+      "email": {
+        "description": "Input field for email address of event host",
+        "example": "e.g. {% text_field \"email\", class:\"text\" %}"
+      }
+    }
+  },
+  "event_rsvp": {
+    "slug": "event_rsvp_variables",
+    "title": "Event RSVP variables",
+    "properties": {
+      "page": {
+        "type": "page"
+      },
+      "event": {
+        "type": "page.event"
+      },
+      "ticket_level": {
+        "description": "Ticket level amounts",
+        "example": "e.g. $10, $25, $50"
+      },
+      "name": {
+        "description": "First and last name of RSVP",
+        "example": "e.g. {{ rsvp.name }}"
+      },
+      "first_name": {
+        "description": "First name of RSVP",
+        "example": "e.g. {% text_field \"first_name\", class:\"text\" %}"
+      },
+      "last_name": {
+        "description": "Last name of RSVP",
+        "example": "e.g. {% text_field \"last_name\", class:\"text\" %}"
+      },
+      "email": {
+        "description": "Email of RSVP",
+        "example": "e.g. {% text_field \"email\", class:\"text\" %}"
+      },
+      "submitted_address": {
+        "description": "Address of RSVP (Street, City, State, Postal code)",
+        "example": "e.g. {% text_field \"submitted_address\", class:\"text\" %}"
+      },
+      "phone_number": {
+        "description": "Phone number of RSVP",
+        "example": "e.g. {% text_field \"phone_number\", class:\"text\" %}"
+      },
+      "guests_count": {
+        "description": "Number of guests RSVP is bringing",
+        "example": "e.g. +2"
+      },
+      "recruiter": {
+        "description": "Recruiter of RSVP",
+        "example": "e.g. <![CDATA[ {% if page.event.is_hosts? or request.current_recruiter %} <p><label for=\"event_rsvp_recruiter_id\">Did a host refer you?</label></p> <select name=\"event_rsvp[recruiter_id]\"> <option value=\"\">No</option> {% if request.current_recruiter %} <option value=\"{{ request.current_recruiter.id }}\" selected>{{ request.current_recruiter.published_name }}</option> {% endif %} ]]>",
+        "type": "signup"
+      },
+      "recruiter_id": {
+        "description": "Recruiter id of RSVP",
+        "example": "e.g. See recruiter example above"
+      },
+      "is_facebook?": {},
+      "is_volunteer?": {
+        "description": "Checks if form should ask RSVPs about volunteering",
+        "example": "e.g. {% if event_rsvp.is_volunteer? %}"
+      },
+      "is_volunteer": {
+        "description": "Asks RSVP if they want to volunteer",
+        "example": "e.g. <![CDATA[ {% check_box \"is_volunteer\", class:\"checkbox\" %} I want to volunteer ]]>"
+      },
+      "is_private": {
+        "description": "Asks RSVP if they don't their RSVP published to the website",
+        "example": "e.g. <![CDATA[ {% check_box \"is_private\", class:\"checkbox\" %} Dont publish this on the website ]]>"
+      },
+      "post_to_facebook": {
+        "description": "Asks RSVP if they also want to RSVP on Facebook",
+        "example": "e.g. <![CDATA[ {% check_box \"post_to_facebook\", class:\"checkbox\" %} Also RSVP on Facebook ]]>"
+      }
+    }
+  },
+  "event_ticket_level": {
+    "slug": "event_ticket_level_variables",
+    "title": "Event ticket level variables",
+    "properties": {
+      "name": {
+        "description": "Name of the ticket level",
+        "example": "e.g. VIP, Regular"
+      },
+      "id": {
+        "description": "ID of the ticket level",
+        "example": "e.g. {{ event_ticket_level.id }}"
+      },
+      "description": {
+        "description": "Description of the ticket level",
+        "example": "e.g. \"Dinner with the candidate\""
+      },
+      "amount": {
+        "description": "Amount of the ticket",
+        "example": "e.g. $10.00"
+      },
+      "amount_in_cents": {
+        "description": "Amount of the ticket in cents",
+        "example": "e.g. 1000"
+      },
+      "number": {
+        "description": "Number of tickets",
+        "example": "e.g. {{ event_ticket_level.number }}"
+      },
+      "rsvps": {
+        "description": "Last 10 RSVPs",
+        "example": "e.g. {{ event_ticket_level.rsvps }}"
+      },
+      "quantity_sold": {
+        "description": "Quantity sold",
+        "example": "e.g. {{ event_ticket_level.quantity_sold }}"
+      },
+      "quantity_remaining": {
+        "description": "Quantity remaining. Returns nil if quantity unlimited.",
+        "example": "e.g. {{ event_ticket_level.quantity_remaining }}"
+      },
+      "quantity_limit": {
+        "description": "Quantity limit. Returns 0 if quantity unlimited.",
+        "example": "e.g. {{ event_ticket_level.quantity_limit }}"
+      }
+    }
+  },
+  "feature": {
+    "slug": "feature_variables",
+    "title": "Feature variables",
+    "properties": {
+      "feature.name": {
+        "description": "The label of the featured image"
+      },
+      "feature.headline": {
+        "description": "The headline text of the featured image"
+      },
+      "feature.page.url": {
+        "description": "URL of page image is linking to"
+      },
+      "feature.image_url": {
+        "description": "URL for the full size content slider image"
+      },
+      "feature.image_width": {
+        "description": "Width of feature image"
+      },
+      "feature.image_height": {
+        "description": "Height of feature image"
+      },
+      "feature.small_image_url": {
+        "description": "URL of the small version of the feature image"
+      },
+      "feature.medium_image_url": {
+        "description": "URL of the medium version of the feature image"
+      },
+      "feature.large_image_url": {
+        "description": "URL of the large version of the feature image"
+      }
+    }
+  },
+  "flag": {
+    "slug": "flag_variables",
+    "title": "Flag variables",
+    "properties": {
+      "author": {
+        "description": "Person doing the flagging",
+        "example": "e.g. {{ flag.author.published_name }}"
+      },
+      "signup": {
+        "description": "Author of the flagged content",
+        "example": "e.g. {{ flag.signup.published_name }}"
+      },
+      "comment": {
+        "description": "Comment flagged",
+        "example": "e.g. {{ flag.comment.content }}"
+      },
+      "comment_id": {
+        "description": "Comment id",
+        "example": "e.g. {{ flag.comment_id }}"
+      },
+      "page": {
+        "description": "Page flagged",
+        "example": "e.g. {{ flag.page.name }}"
+      },
+      "page_id": {
+        "description": "Page id",
+        "example": "e.g. {{ flag.page_id }}"
+      },
+      "rule": {
+        "description": "Rule broken",
+        "example": "e.g. {{ flag.rule.name }}"
+      },
+      "content": {
+        "description": "Reason for flagging",
+        "example": "e.g. {{ flag.content }}"
+      }
+    }
+  },
+  "flash": {
+    "slug": "flash_variables",
+    "title": "Flash variables",
+    "properties": {
+      "key": {
+        "description": "The type of message, either success, notice, or error",
+        "example": "e.g. {{ flash.key }}"
+      },
+      "message": {
+        "description": "The message",
+        "example": "e.g. {{ flash.message }}"
+      },
+      "page": {
+        "description": "Page referred to",
+        "example": "e.g. @{{ flash.page }}",
+        "type": "page"
+      },
+      "page_id": {
+        "description": "Page ID referred to",
+        "example": "e.g. {{ flash.page_id }}"
+      }
+    },
+    "description": "These are only used in the _flash templates."
+  },
+  "leaderboard": {
+    "slug": "leaderboard_variables",
+    "title": "Leaderboard variables",
+    "properties": {
+      "total": {
+        "description": "Total, if the leaderboard has a goal",
+        "example": "e.g. {{ leaderboard.total }}"
+      },
+      "display_name": {
+        "description": "Name of leaderboard",
+        "example": "e.g. {{ leaderboard.display_name }}"
+      },
+      "time_range_name": {
+        "description": "Time period of leaderboard",
+        "example": "e.g. {{ leaderboard.time_range_name }}"
+      },
+      "goal_name": {
+        "description": "What's being calculated",
+        "example": "e.g. Amount of Political Capital, amount of numbers called in a phone bank, etc."
+      },
+      "goal_name_short": {
+        "description": "Abbreviated name of what's being calculated",
+        "example": "e.g. \"pc,\" \"calls made,\" etc."
+      },
+      "goal": {
+        "description": "Goal total set in page's settings",
+        "example": "e.g. {{ leaderboard.goal }}"
+      },
+      "has_goal?": {
+        "description": "Checks if a goal has been set for the page",
+        "example": "e.g. {% if leaderboard.has_goal? %} -- see loop example in \"total\" variable above"
+      },
+      "has_met_goal?": {
+        "description": "Checks if the goal has been met",
+        "example": "e.g. {% if leaderboard.has_met_goal? %}"
+      },
+      "percent_of_goal": {
+        "description": "Percent of goal met",
+        "example": "e.g. {{ leaderboard.percent_of_goal }}"
+      },
+      "display_number_results": {
+        "description": "Number of leaderboard rankings being displayed",
+        "example": "e.g. <![CDATA[ <h4>Top {{ leaderboard.display_number_results }} {{ leaderboard.display_name }}</h4> ]]>"
+      },
+      "number_results": {
+        "description": "Total number of rankings",
+        "example": "e.g. {{ leaderboard.number_results }}"
+      },
+      "entries": {
+        "description": "Array of leaderboard_entry",
+        "example": "e.g. <![CDATA[ {% for entry in leaderboard.entries %} <div class=\"leaderboard_rank_wrap\" id=\"{% cycle 'odd', 'even' %}\"> <div class=\"leaderboard_rank\" id=\"rising\">{{ entry.position }}</div> <div class=\"leaderboard_pic\">{{ entry.signup.profile_image }}</div> <div class=\"leaderboard_name\">{{ entry.signup.published_name_linked }}</div> <span class=\"pb\">{{ entry.total }} {{ leaderboard.goal_name }}</span> </div> {% endfor %} ]]>"
+      }
+    }
+  },
+  "leaderboard_entry": {
+    "slug": "leaderboard_entry_variables",
+    "title": "Leaderboard entry variables",
+    "properties": {
+      "total": {
+        "description": "Total progress, if the leaderboard has a goal",
+        "example": "e.g. {{ leaderboard.total }}"
+      },
+      "signup": {
+        "description": "Signups name",
+        "example": "e.g. {{ leaderboard.signup }}"
+      },
+      "position": {
+        "description": "Users ranking",
+        "example": "e.g. {{ leaderboard.position }}"
+      }
+    }
+  },
+  "mailing": {
+    "slug": "mailing_variables",
+    "title": "Mailing variables",
+    "properties": {
+      "slug": {
+        "description": "Slug name given to mailing",
+        "example": "e.g. {{ mailing.slug }}"
+      },
+      "type_name": {
+        "description": "Type of mailing",
+        "example": "e.g. Basic, Event Reminder, Petition"
+      }
+    }
+  },
+  "membership": {
+    "slug": "membership_variables",
+    "title": "Membership variables",
+    "properties": {
+      "membership_type_name": {
+        "description": "Membership type name",
+        "example": "e.g. {{ membership.membership_type_name }}"
+      },
+      "description": {
+        "description": "Membership description",
+        "example": "e.g. {{ membership.description }}"
+      },
+      "expires_on": {
+        "description": "Membership expiration date",
+        "example": "e.g. {{ membership.expires_on }}"
+      },
+      "grace_period?": {
+        "description": "Membership in grace period? (boolean)",
+        "example": "e.g. {{ membership.grace_period? }}"
+      },
+      "grace_period_ends_on": {
+        "description": "Membership grace period end date",
+        "example": "e.g. {{ membership.grace_period_ends_on }}"
+      },
+      "status": {
+        "description": "Membership status",
+        "example": "e.g. {{ membership.status }}"
+      },
+      "status_reason": {
+        "description": "A description of how the membership acquired its current status",
+        "example": "e.g. {{ membership.status_reason }}"
+      },
+      "started_at": {
+        "description": "Membership start date",
+        "example": "e.g. {{ membership.started_at }}"
+      }
+    }
+  },
+  "merchant_account": {
+    "slug": "merchant_account_variables",
+    "title": "Merchant account variables",
+    "properties": {
+      "is_visa?": {
+        "description": "Checks if Visa is allowed",
+        "example": "e.g. {% if merchant_account.is_visa? %}"
+      },
+      "is_mastercard?": {
+        "description": "Checks if Mastercard is allowed",
+        "example": "e.g. {% if merchant_account.is_mastercard? %}"
+      },
+      "is_amex?": {
+        "description": "Checks if American Express is allowed",
+        "example": "e.g. {% if merchant_account.is_amex? %}"
+      },
+      "is_discover?": {
+        "description": "Checks if Discover is allowed",
+        "example": "e.g. {% if merchant_account.is_discover? %}"
+      },
+      "is_test_mode?": {
+        "description": "Is the merchant account in test mode?",
+        "example": "e.g. {% if merchant_account.is_test_mode? %}"
+      },
+      "accepted_card_icons": {
+        "description": "Displays logos of accepted credit cards",
+        "example": "e.g. {{ merchant_account.accepted_card_icons }}"
+      },
+      "has_contribution_rules?": {
+        "description": "Are there rules that must be accepted before donating?",
+        "example": "e.g. {% page.donation.merchant_account.has_contribution_rules? %}{% endif %}"
+      },
+      "contribution_rules": {
+        "description": "Text of contribution rules",
+        "example": "e.g. {{ page.donation.merchant_account.contribution_rules? }}"
+      },
+      "is_taxable?": {
+        "description": "Are transactions taxed?",
+        "example": "e.g. {% if page.donation.merchant_account.is_taxable? %}{% endif %}"
+      },
+      "is_employer_and_occupation_required?": {
+        "description": "Are employer and occupation required?",
+        "example": "e.g. {% if page.donation.merchant_account.employer_and_occupation_required? %}{% endif %}"
+      },
+      "is_employer_city_required?": {
+        "description": "Does this jurisdiction require the city/state for their employer?",
+        "example": "e.g. {% if page.donation.merchant_account.is_employer_city_required? %}{% endif %}"
+      },
+      "is_employer_address_required?": {
+        "description": "Does this jurisdiction require a full employer address?",
+        "example": "e.g. {% if page.donation.merchant_account.is_employer_address_required? %}{% endif %}"
+      },
+      "organization_type": {
+        "description": "Type of organization",
+        "example": "e.g. for_profit, nonprofit, federal_candidate, etc"
+      },
+      "is_paypal_express?": {
+        "description": "Is the merchant account paypal?",
+        "example": "e.g. {% if merchant_account.is_paypal_express? %}"
+      }
+    }
+  },
+  "order": {
+    "slug": "order_variables",
+    "title": "Order variables",
+    "properties": {
+      "items": {
+        "description": "Accesses the items which can be ordered",
+        "example": "e.g. <![CDATA[ {% for item in request.current_order.items %} {{ item.quantity }} {{ item.name }} @ {{ item.amount }} <br/> {% endfor %} ]]>"
+      },
+      "recruiter": {
+        "description": "Recruiter who brought user to page",
+        "example": "e.g. {{ order.recruiter }}"
+      },
+      "recruiter_id": {
+        "description": "Recruiter id for person who brought user to the page",
+        "example": "e.g. {{ order.recruiter_id }}"
+      },
+      "is_paid_membership?": {
+        "description": "Is this donation supporting a paid membership checkout?"
+      },
+      "form_amount_options": {
+        "description": "Number of items",
+        "example": "e.g. {{ order.form_amount_options }}"
+      }
+    }
+  },
+  "order_item": {
+    "slug": "order_item_variables",
+    "title": "Order item variables",
+    "properties": {
+      "name": {
+        "description": "Name of item",
+        "example": "e.g. {{ order_item.name }}"
+      },
+      "description": {
+        "description": "Description of item",
+        "example": "e.g. {{ order_item.description }}"
+      },
+      "quantity": {
+        "description": "Quantity of the item",
+        "example": "e.g. {{ order_item.quantity }}"
+      },
+      "amount": {
+        "description": "Amount of the item",
+        "example": "e.g. {{ order_item.amount }}"
+      }
+    }
+  },
+  "page": {
+    "slug": "page_variables",
+    "title": "Page variables",
+    "properties": {
+      "id": {
+        "description": "id number assigned to page",
+        "example": "e.g. {{ page.id }}"
+      },
+      "title": {
+        "example": "e.g. {{ page.title }}"
+      },
+      "name": {
+        "example": "e.g. {{ page.name }}"
+      },
+      "slug": {
+        "example": "e.g. {% if page.slug == 'innovation' %}"
+      },
+      "excerpt": {
+        "example": "e.g. {{ page.excerpt }}"
+      },
+      "headline": {
+        "example": "e.g. {{ page.headline }}"
+      },
+      "attachments": {
+        "example": "Array of page attachments"
+      },
+      "type_name": {
+        "description": "Page type name",
+        "example": "e.g. Blog, Donation, Petition Signature, etc."
+      },
+      "type_slug": {
+        "description": "Page type by slug",
+        "example": "e.g. blog, volunteer_signup, petition_signature"
+      },
+      "icon": {
+        "description": "16x16 icon corresponding to the page's type",
+        "example": "e.g. {{ page.icon | icon }}"
+      },
+      "has_author?": {
+        "description": "Does this page have an author?"
+      },
+      "author": {
+        "example": "e.g. {{ page.author.published_name }}",
+        "type": "signup"
+      },
+      "published_at": {
+        "description": "When this page was published",
+        "example": "e.g. {{ page.published_at | date: '%b %d, %Y %l:%M %p' }}"
+      },
+      "has_meta_image?": {
+        "description": "Does the site have a primary image?"
+      },
+      "meta_image_url": {
+        "description": "Logo used by Facebook share/digg/etc.",
+        "example": "e.g. <img src=\"{{ page.meta_image_url }}\" />"
+      },
+      "meta_image_medium_url": {
+        "description": "Image used by Facebook share/digg/etc.",
+        "example": "e.g. <img src=\"{{ page.meta_image_medium_url }}\" />"
+      },
+      "meta_image_large_url": {
+        "description": "Image used by Facebook share/digg/etc.",
+        "example": "e.g. <img src=\"{{ page.meta_image_large_url }}\" />"
+      },
+      "is_user_submitted?": {
+        "description": "Was this page submitted by a user",
+        "example": "true or false"
+      },
+      "show_stream?": {
+        "description": "Checks if the activity stream is enabled",
+        "example": "true or false"
+      },
+      "is_commentable?": {
+        "description": "Checks if comments are enabled",
+        "example": "true or false"
+      },
+      "comments_count": {
+        "description": "Number of comments",
+        "example": "{{ page.comments_count }} comments"
+      },
+      "followers_count": {
+        "description": "# of people following this page"
+      },
+      "followers": {
+        "description": "All the page followers"
+      },
+      "follow_url": {
+        "description": "URL to follow this page"
+      },
+      "unfollow_url": {
+        "description": "URL to unfollow this page"
+      },
+      "flag_url": {
+        "description": "URL to flag this page"
+      },
+      "has_rule_violation?": {
+        "description": "Checks if the page violated a rule",
+        "example": "e.g. {% if page.has_rule_violation? %}"
+      },
+      "tweet_url": {
+        "description": "Link to tweet this page through Twitter"
+      },
+      "default_face_tweet_text": {
+        "description": "Default text used for the face tweet, and twitter/facebook sharing",
+        "example": "e.g. {{ page.default_face_tweet_text }}"
+      },
+      "default_tweet_text": {
+        "description": "No longer used",
+        "deprecated": true
+      },
+      "default_tweet_text_without_url": {
+        "description": "No longer used",
+        "deprecated": true
+      },
+      "default_facebook_text": {
+        "description": "No longer used",
+        "deprecated": true
+      },
+      "google_buzz_url": {
+        "description": "Path to page's Google Buzz URL",
+        "example": "e.g. http://www.google.com/buzz/post?url=http://yourdomain.com/pages/nyc/recruiter_id=123"
+      },
+      "text_keyword_instructions": {
+        "description": "If the action on this page can be taken by texting a keyword, this will give the instructions",
+        "example": "e.g. {{ page.text_keyword_instructions }} likes"
+      },
+      "is_homepage?": {
+        "description": "Checks if the page is the homepage",
+        "example": "e.g. {% if page.is_homepage? == false %}"
+      },
+      "has_parent?": {
+        "description": "Does this page have a parent?",
+        "example": "e.g. {% if page.has_parent? %}"
+      },
+      "parent": {
+        "description": "The parent page of this page.",
+        "example": "e.g. {{ page.parent.title }}",
+        "type": "page"
+      },
+      "ancestors": {
+        "description": "Ancestors of the page",
+        "example": "e.g. {% for ancestor in page.ancestors %}"
+      },
+      "self_and_ancestors": {
+        "description": "The page itself and its ancestors",
+        "example": "e.g. {% for ancestor in page.ancestors %}"
+      },
+      "descendants": {
+        "description": "Descendants of the page",
+        "example": "e.g. {% for descendants in page.descendants %}"
+      },
+      "self_and_descendants": {
+        "description": "The page itself and its descendants",
+        "example": "e.g."
+      },
+      "has_children?": {
+        "description": "Does this page have children?",
+        "example": "e.g."
+      },
+      "children": {
+        "description": "Children of the page",
+        "example": "e.g."
+      },
+      "children_count": {
+        "description": "Number of page children",
+        "example": "e.g."
+      },
+      "has_subnav?": {
+        "description": "Does this page have a subnav?",
+        "example": "e.g."
+      },
+      "subnav_count": {
+        "description": "Number of subnav pages",
+        "example": "e.g."
+      },
+      "nav_children": {
+        "description": "Subnav pages",
+        "example": "e.g."
+      },
+      "level": {
+        "description": "How many levels deep in the hierarchy",
+        "example": "e.g."
+      },
+      "leaf?": {
+        "description": "Checks if the page is a leaf",
+        "example": "e.g. true or false"
+      },
+      "is_nav?": {
+        "description": "Checks if page is in the top nav",
+        "example": "e.g. Toggled on/off in admin panel"
+      },
+      "is_supporter_nav?": {
+        "description": "Checks if page is in the supporter nav",
+        "example": "e.g. Toggled on/off in admin panel"
+      },
+      "is_or_is_descendant_of_current_page?": {
+        "description": "?",
+        "example": "e.g."
+      },
+      "is_or_is_ancestor_of_current_page?": {
+        "description": "?",
+        "example": "e.g."
+      },
+      "most_recent_published_descendants": {
+        "description": "Most recently published descendants of page",
+        "example": "e.g."
+      },
+      "most_recent_published_descendant": {
+        "description": "Most recently published descendant of page",
+        "example": "e.g."
+      },
+      "features_count": {
+        "description": "Number of published featured content sliders",
+        "example": "e.g. 2"
+      },
+      "features": {
+        "description": "All the featured content sliders",
+        "example": "e.g. {% for feature in page.features %}{% endfor %}"
+      },
+      "page_class_name": {
+        "description": "Used to trigger different CSS classes per pagetype in the \"body\" of the layout.html template"
+      },
+      "activities": {
+        "description": "Paginated array of activities associated with this page",
+        "example": "e.g."
+      },
+      "activities_count": {
+        "description": "Total number of reactions/activities public & private",
+        "example": "e.g. {{ page.activities_count }} reactions"
+      },
+      "public_activities_count": {
+        "description": "Number of public activities for page",
+        "example": "e.g. {{ page.public_activities_count }} reactions"
+      },
+      "private_activities_count": {
+        "description": "Number of private activities for page",
+        "example": "e.g. {{ page.private_activities_count }} not shown"
+      },
+      "page_leaderboards": {
+        "description": "Displays any leaderboard for page",
+        "example": "e.g."
+      },
+      "donations_amount_format": {
+        "description": "Total amount donated from page",
+        "example": "e.g. {{ page.donations_amount_format }} raised"
+      },
+      "donations_count": {
+        "description": "Total number of donations from page",
+        "example": "e.g. {{ page.donations_count }} donors"
+      },
+      "most_recent_donation": {
+        "description": "Most recent donor from page",
+        "example": "e.g. {{ page.most_recent_donation.signup.published_name_linked }}"
+      },
+      "pledges_amount": {
+        "description": "Total amount pledged from page",
+        "example": "e.g. {{ page.pledges_amount_format }} raised"
+      },
+      "pledges_count": {
+        "description": "Total number of pledges from page",
+        "example": "e.g. {{ page.pledges_count }} donors"
+      },
+      "tags_count": {
+        "description": "Total number of tags on this page",
+        "example": "e.g. {{ page.tags_count }} tags"
+      },
+      "tags": {
+        "description": "Array of page tags"
+      },
+      "consent_form?": {
+        "description": "Checks if the page has a consent form",
+        "example": "e.g. {% if page.consent_form? %}"
+      },
+      "url": {
+        "description": "Local URL path",
+        "example": "e.g. pages/nyc"
+      },
+      "full_url": {
+        "description": "Full URL path",
+        "example": "e.g. http://yourdomain.com/pages/nyc"
+      },
+      "full_url_with_recruiter": {
+        "description": "Full URL with recruiter id",
+        "example": "e.g. http://yourdomain.com/pages/nyc?recruiter_id=123"
+      },
+      "url_with_facebook_authorization": {
+        "description": "Get Facebook authorization, then go to this page",
+        "example": "e.g. pages/nyc"
+      },
+      "url_with_facebook_email_authorization": {
+        "description": "Get Facebook authorization, including email address, then go to this page",
+        "example": "e.g. pages/nyc"
+      },
+      "admin_edit_url": {
+        "description": "Local path to page's admin settings",
+        "example": "e.g. /admin/sites/1/pages/18/edit"
+      },
+      "admin_subpages_url": {
+        "description": "Local path to page's subpages",
+        "example": "e.g. /admin/sites/1/pages/18/subpages"
+      },
+      "admin_new_subpage_url": {
+        "description": "Local path to create a new subpage for page",
+        "example": "e.g. /admin/sites/1/pages/new?parent_id=18"
+      },
+      "admin_url": {
+        "description": "Local path to page's admin dashboard",
+        "example": "e.g. /admin/sites/1/pages/new?parent_id=18"
+      },
+      "has_rss?": {
+        "description": "Does this page have an RSS feed?",
+        "example": "e.g. {% if page.has_rss? %}{% endif %}"
+      },
+      "rss_url": {
+        "description": "URL of RSS feed",
+        "example": "e.g. http://3dna.us/blog.rss"
+      },
+      "activity_stream": {
+        "type": "page.activity_stream"
+      },
+      "basic": {
+        "type": "page.basic"
+      },
+      "blog": {
+        "type": "page.blog"
+      },
+      "blog_post": {
+        "type": "page.blog_post"
+      },
+      "calendar": {
+        "type": "page.calendar"
+      },
+      "directory": {
+        "type": "page.directory"
+      },
+      "donation": {
+        "type": "page.donation",
+        "description": "Donation and Donation (v2) pages"
+      },
+      "endorsement": {
+        "type": "page.endorsement"
+      },
+      "event": {
+        "type": "page.event"
+      },
+      "faq": {
+        "type": "page.faq"
+      },
+      "feedback": {
+        "type": "page.feedback"
+      },
+      "invoice": {
+        "type": "page.invoice",
+        "description": "These variables are for the invoice page itself."
+      },
+      "leaderboard": {
+        "type": "page.leaderboard"
+      },
+      "moneybomb": {
+        "type": "page.moneybomb"
+      },
+      "petition": {
+        "type": "page.petition"
+      },
+      "press_release": {
+        "type": "page.press_release"
+      },
+      "question": {
+        "type": "page.question"
+      },
+      "rule": {
+        "type": "page.rule"
+      },
+      "signup": {
+        "type": "page.signup"
+      },
+      "suggestion": {
+        "type": "page.suggestion"
+      },
+      "suggestion_box": {
+        "type": "page.suggestion_box"
+      },
+      "survey": {
+        "type": "page.survey"
+      },
+      "volunteer_signup": {
+        "type": "page.volunteer_signup"
+      },
+      "vote_pledge": {
+        "type": "page.vote_pledge"
+      },
+      "voter_registration": {
+        "type": "page.voter_registration",
+        "description": "Please note that the voter registration Rock the Vote website page type has been deprecated and some of its featured disabled. We recommend that the you not use the website page type."
+      }
+    },
+    "description": "Every page has access to these variables."
+  },
+  "page_follower": {
+    "slug": "page_follower_variables",
+    "title": "Page follower variables",
+    "properties": {
+      "signup": {
+        "description": "Signup object of person following this page",
+        "type": "signup"
+      },
+      "signup_id": {
+        "description": "Signup id of person following this page"
+      },
+      "page": {
+        "description": "Page object being followed"
+      },
+      "page_id": {
+        "description": "Page id being followed"
+      }
+    }
+  },
+  "page_signup_tagging": {
+    "slug": "page_signup_tagging_variables",
+    "title": "Page signup tagging (user submitted taggings)",
+    "properties": {
+      "id": {
+        "description": "tag id",
+        "example": "e.g. 5"
+      },
+      "tag": {
+        "description": "Tag",
+        "example": "e.g. {{ tagging.tag.name }}",
+        "type": "page_tag"
+      },
+      "signup": {
+        "description": "Signup doing the tagging",
+        "example": "e.g. {{ tagging.signup.published_name }}",
+        "type": "signup"
+      },
+      "page": {
+        "description": "Page tagged",
+        "example": "e.g. {{ tagging.page.url }}",
+        "type": "page"
+      },
+      "signup_taggings_count": {
+        "description": "# of people who've tagged this page with this tag",
+        "example": "e.g. {{ tagging.signup_taggings_count }}"
+      }
+    }
+  },
+  "page_tag": {
+    "slug": "page_tag_variables",
+    "title": "page_tag",
+    "properties": {
+      "id": {
+        "description": "id",
+        "example": "e.g. 5"
+      },
+      "name": {
+        "description": "Name of tag",
+        "example": "e.g. Important Suggestion"
+      },
+      "slug": {
+        "description": "Slug",
+        "example": "e.g. important_suggestion"
+      },
+      "count": {
+        "description": "Number of pages with this tag",
+        "example": "e.g. 5"
+      },
+      "most_recent_published_pages": {
+        "description": "Paginated list of recently published page objects tagged with this tag. Limits to 10 pages.",
+        "example": "e.g."
+      },
+      "most_recent_published_pages_no_pagination": {
+        "description": "Non-paginated list of recently updated page objects tagged with this tag. Can display up to 500 pages."
+      },
+      "most_recent_updated_pages": {
+        "description": "Paginated list of recently updated page objects tagged with this tag. Limits to 10 pages."
+      },
+      "most_recent_updated_pages_no_pagination": {
+        "description": "Non-paginated list of recently updated page objects tagged with this tag. Can display up to 500 pages."
+      },
+      "alphabetical_pages": {
+        "description": "Paginated list of alphabetical page objects tagged with this tag. Limits to 10 pages."
+      },
+      "alphabetical_pages_no_pagination": {
+        "description": "Non-paginated list of alphabetical page objects tagged with this tag. Can display up to 500 pages."
+      }
+    }
+  },
+  "page_tagging": {
+    "slug": "page_tagging_variables",
+    "title": "Page tagging variables",
+    "properties": {
+      "id": {
+        "description": "tag id",
+        "example": "e.g. 5"
+      },
+      "tag": {
+        "description": "tag object",
+        "example": "e.g. {{ tagging.tag.name }}",
+        "type": "page_tag"
+      },
+      "page": {
+        "description": "Page tagged",
+        "example": "e.g. {{ tagging.page.url }}",
+        "type": "page"
+      },
+      "signup_taggings_count": {
+        "description": "# of people who've tagged this page with this tag",
+        "example": "e.g. {{ tagging.signup_taggings_count }}"
+      }
+    }
+  },
+  "page.activity_stream": {
+    "slug": "activity_stream_page_variables",
+    "title": "Activity stream page variables",
+    "properties": {
+      "activities": {
+        "description": "Activities of the entire campaign",
+        "example": "e.g. <![CDATA[ {% for activity in page.activity_stream.activities %} {{ activity.show }} {% endfor %} ]]>"
+      },
+      "activities_following": {
+        "description": "Activities of those you are following",
+        "example": "e.g. Same as activities, except loop begins with: {% for activity in page.activity_stream.activities_following %}"
+      }
+    }
+  },
+  "page.basic": {
+    "slug": "basic_page_variables",
+    "title": "Basic page variables",
+    "properties": {
+      "content": {
+        "description": "Displays content specified in page's admin section",
+        "example": "e.g. {{ page.basic.content }}"
+      }
+    }
+  },
+  "page.blog": {
+    "slug": "blog_page_variables",
+    "title": "Blog page variables",
+    "properties": {
+      "number": {
+        "description": "Number of posts to show at a time",
+        "example": "e.g. {{ page.blog.number }}"
+      },
+      "is_posting_public?": {
+        "description": "Allow any logged in user to post from the public site",
+        "example": "e.g. {% if page.blog.is_posting_public? %}"
+      },
+      "public_posting_prompt": {
+        "description": "If public posting is enabled, what to call the input form, ie, \"Add your voice\"",
+        "example": "e.g. {{ page.blog.public_posting_prompt }}"
+      },
+      "most_recent_blog_posts": {
+        "description": "Most recent blog posts",
+        "example": "e.g. <![CDATA[ {% for post in page.blog.most_recent_blog_posts %} <!-- content for recent blog posts --> {% endfor %} ]]>"
+      }
+    }
+  },
+  "page.blog_post": {
+    "slug": "blog_post_page_variables",
+    "title": "Blog post page variables",
+    "properties": {
+      "content": {
+        "description": "Content of the blog post in the \"before the flip\" area",
+        "example": "e.g. {{ post.blog_post.content }}"
+      },
+      "is_extended?": {
+        "description": "Checks if the blog post has content in the \"after the flip\" area",
+        "example": "e.g. <![CDATA[ {% if post.blog_post.is_extended? %} <span class='read_more'><a href='{{ post.url }}'>Read more</a></span> {% endif %} ]]>"
+      },
+      "content_flip": {
+        "description": "Content of the blog post in the \"after the flip\" area",
+        "example": "e.g. {{ post.blog_post.content_flip }}"
+      },
+      "content_full": {
+        "description": "Content of the entire blog post",
+        "example": "e.g. {{ post.blog_post.content_full }}"
+      },
+      "admin_edit_url": {
+        "description": "URL to blog post admin area",
+        "example": "e.g. <![CDATA[ <a href=\"{{ page.blog_post.admin_edit_url }}\">Edit blog post</a> ]]>"
+      }
+    }
+  },
+  "page.calendar": {
+    "slug": "calendar_page_variables",
+    "title": "Calendar page variables",
+    "properties": {
+      "event_type_name": {
+        "description": "If this calendar is set to only show one type of event",
+        "example": "e.g. {{ page.calendar.event_type_name }}"
+      },
+      "event_name": {
+        "description": "Is this an \"event\" or a \"party\", \"rally\", etc.",
+        "example": "e.g. Please host a {{ page.calendar.event_name }}"
+      },
+      "show_map?": {
+        "description": "Show map of all events",
+        "example": "e.g. <![CDATA[ {% if page.calendar.show_map? %} {{ page.calendar.events_upcoming_map }} {% endif %} ]]>"
+      },
+      "allow_user_submitted?": {
+        "description": "Allow people to add their own events",
+        "example": "e.g. <![CDATA[ {% if page.calendar.allow_user_submitted? %} <a href=\"{{ page.calendar.new_event_url }}\">Add your own event.</a> {% endif %} ]]>"
+      },
+      "user_submitted_event_type_name": {
+        "description": "New user submitted events will be of this type",
+        "example": "e.g. {{ page.calendar.event_type_name }}"
+      },
+      "is_proximity?": {
+        "description": "Sort by distance (instead of by date)",
+        "example": "e.g. <![CDATA[ {% if page.calendar.is_proximity? %} {% include \"calendar_search\" %} {% endif %} ]]>"
+      },
+      "events": {
+        "description": "All events, past and future",
+        "example": "e.g. <![CDATA[ {% for event in page.calendar.events %} {% include \"event\" %} {% endfor %} ]]>"
+      },
+      "events_all": {
+        "description": "An unpaginated listing of all events, past and future.",
+        "example": "e.g. <![CDATA[ {% for event in page.calendar.events_all %} {% include \"event\" %} {% endfor %} ]]>"
+      },
+      "events_map": {
+        "description": "Puts a Google map of all events, past and future",
+        "example": "e.g. {{ page.calendar.events_map }}"
+      },
+      "events_nearby": {
+        "description": "All nearby events, past and future",
+        "example": "e.g. <![CDATA[ {% for event in page.calendar.events_nearby %} {% include \"event\" %} {% endfor %} ]]>"
+      },
+      "events_nearby_map": {
+        "description": "Puts a Google map of all nearby events, past and future",
+        "example": "e.g. {{ page.calendar.events_nearby_map }}"
+      },
+      "events_nearby_count": {
+        "description": "Total # of all nearby events, past and future",
+        "example": "e.g. There are {{ page.calendar.events_nearby_count }} events"
+      },
+      "events_upcoming": {
+        "description": "Upcoming events",
+        "example": "e.g. <![CDATA[ {% for event in page.calendar.events_upcoming %} {% include \"event\" %} {% endfor %} ]]>"
+      },
+      "events_upcoming_map": {
+        "description": "Puts a Google map of upcoming events",
+        "example": "e.g. {{ page.calendar.events_upcoming_map }}"
+      },
+      "events_upcoming_count": {
+        "description": "Total # of upcoming events",
+        "example": "e.g. There are {{ page.calendar.events_upcoming_count }} events"
+      },
+      "events_upcoming_nearby": {
+        "description": "Upcoming events nearby (using proximity search)",
+        "example": "e.g. <![CDATA[ {% for event in page.calendar.events_upcoming_nearby %} {% include \"event\" %} {% endfor %} ]]>"
+      },
+      "events_upcoming_nearby_map": {
+        "description": "Puts a Google map of upcoming events nearby",
+        "example": "e.g. {{ page.calendar.events_upcoming_nearby_map }}"
+      },
+      "events_upcoming_nearby_count": {
+        "description": "Total # of upcoming nearby events",
+        "example": "e.g. {{ page.calendar.events_upcoming_nearby_count }}"
+      },
+      "events_upcoming_all": {
+        "description": "A list of all upcoming events",
+        "example": "e.g. <![CDATA[ {% for event in page.calendar.events_upcoming_all %} {% include \"event\" %} {% endfor %} ]]>"
+      },
+      "events_past": {
+        "description": "Past events",
+        "example": "e.g. <![CDATA[ {% for event in page.calendar.events_past %} {% include \"event\" %} {% endfor %} ]]>"
+      },
+      "events_past_map": {
+        "description": "Puts a Google map of past events",
+        "example": "e.g. {{ page.calendar.events_past_map }}"
+      },
+      "events_past_count": {
+        "description": "Total # of past events",
+        "example": "e.g. {{ page.calendar.events_past_count }}"
+      },
+      "events_past_all": {
+        "description": "A list of all past events",
+        "example": "e.g. <![CDATA[ {% for event in page.calendar.events_past_all %} {% include \"event\" %} {% endfor %} ]]>"
+      },
+      "content": {
+        "description": "Intro content",
+        "example": "e.g. {{ page.calendar.content }}"
+      }
+    }
+  },
+  "page.directory": {
+    "slug": "directory_page_variables",
+    "title": "page.directory",
+    "properties": {
+      "listings": {
+        "description": "Directory listings (paginated)"
+      },
+      "listings_count": {
+        "description": "Total number of listings in the directory"
+      },
+      "is_user_specific?": {
+        "description": "Whether the grouping on the directory is user-specific. Is it displaying followers, following, or recruits?"
+      },
+      "not_user_specific?": {
+        "description": "Whether directory is displaying a grouping that is not user-specific"
+      },
+      "content": {
+        "description": "Content / intro section"
+      }
+    }
+  },
+  "page.donation": {
+    "slug": "donation_page_variables",
+    "title": "Donation page variables",
+    "properties": {
+      "content": {
+        "description": "Displays content specified in page's Intro section",
+        "example": "e.g. {{ page.donation.content }}"
+      },
+      "amount_goal_format": {
+        "description": "Donation goal for page formatted (e.g. $12.37)",
+        "example": "e.g. Amount of money set as the goal for the donation page"
+      },
+      "percent_of_amount_goal": {
+        "description": "Percent of amount goal met",
+        "example": "e.g. {{ page.donation.percent_of_amount_goal }}"
+      },
+      "donor_goal": {
+        "description": "Donor goal",
+        "example": "e.g. The number of donors set as the goal for the donation page"
+      },
+      "percent_of_donor_goal": {
+        "description": "Percentage of donor goal met",
+        "example": "e.g. {{ page.donation.percent_of_donor_goal }}"
+      },
+      "merchant_account": {
+        "description": "Merchant or bank account",
+        "example": "e.g. {{ page.donation.merchant_account.accepted_card_icons }}",
+        "type": "merchant_account"
+      },
+      "donation_frequency": {
+        "description": "Returns frequency settings for the page.",
+        "example": "e.g. one-time; monthly; annual; one-time,monthly; one-time,annual; one-time,monthly,annual; or monthly,annual"
+      },
+      "amounts": {
+        "description": "Array of default donation amounts"
+      },
+      "accepts_single_amount?": {
+        "description": "Checks whether the page accepts only a single amount",
+        "example": "e.g. {% if page.donation.accepts_single_amount? %}"
+      },
+      "accepts_variable_amounts?": {
+        "description": "Checks whether the page accepts multiple amounts",
+        "example": "e.g. {% if page.donation.accepts_variable_amounts? %}"
+      },
+      "form_amount_options": {
+        "description": "Amounts set by control panel user if \"Accept multiple amounts\" enabled",
+        "example": "e.g. <![CDATA[ <label for=\"donation_amounts\">Amount</label><br/> {% if request.current_order %} {% for item in request.current_order.items %} {{ item.quantity }} {{ item.name }} @ {{ item.amount }} <br/> {% endfor %} {{ request.current_order.form_amount_options }} {% if request.logged_in? or request.sorta_logged_in? %} <br/><br/> <a href=\"{{ request.current_signup.logout_url }}\">Clear order</a> {% endif %} {% else %} {{ page.donation.form_amount_options }} {% endif %} ]]>"
+      },
+      "amount_formatted": {
+        "description": "Amount set by control panel user if \"Accept multiple amounts\" disabled",
+        "example": "e.g. {{ page.donation.amount_formatted }}"
+      },
+      "currency_symbol": {
+        "description": "The symbol of the nation's default currency",
+        "example": "e.g. {{ page.donation_v2.currency_symbol }}"
+      },
+      "interval_monthly?": {
+        "description": "Checks if the donor has selected monthly payments",
+        "example": "{% if page.donation_v2.interval_monthly? %}"
+      },
+      "interval_annual?": {
+        "description": "Checks if the donor has selected annual payments",
+        "example": "{% if page.donation_v2.interval_annual? %}"
+      },
+      "url_query_amount": {
+        "description": "Value specified by the ?amount= URL param used to prefill the amount",
+        "example": "e.g. {{ page.donation_v2.url_query_amount }}"
+      },
+      "confirmation_amount": {
+        "description": "Displays the selected amount to the donor before they submit the form",
+        "example": "e.g. <![CDATA[ <label for=\"donation_amounts\">Amount</label><br/> {% if page.donation_v2.confirmation_amount %} <span>{{ page.donation_v2.currency_symbol }}</span><span class=\"nb_donation_v2_amount\">{{ page.donation_v2.confirmation_amount }}</span> {% else %} <span class=\"hidden\">{{ page.donation_v2.currency_symbol }}</span><span class=\"nb_donation_v2_amount\">Please select an amount</span> {% endif %} ]]>"
+      },
+      "ticket_purchase_total": {
+        "description": "When a ticket order is present, displays the total cost",
+        "example": "e.g. {{ page.donation_v2.ticket_purchase_total }}"
+      },
+      "recurring_radio_buttons": {
+        "description": "Radio buttons presented to donor to toggle between one-time, monthly recurring, and annual recurring donations",
+        "example": "e.g. {{ page.donation_v2.recurring_radio_buttons }}"
+      },
+      "amount_other": {
+        "description": "Input for donor to enter custom amount if multiple amounts accepted",
+        "example": "e.g. {{ page.donation_v2.amount_other }}"
+      },
+      "show_frequency_radio_buttons?": {
+        "description": "Checks if multiple frequencies (one-time, monthly recurring, annual recurring) should be displayed",
+        "example": "{% if page.donation_v2.show_frequency_radio_buttons? %}"
+      },
+      "minimum_amount": {
+        "description": "Minimum donation amount",
+        "example": "e.g. {{ page.donation.minimum_amount }}"
+      },
+      "has_amount_goal?": {
+        "description": "Checks if page has a donation goal set",
+        "example": "e.g. {% if page.donation.has_amount_goal? %}"
+      },
+      "has_met_amount_goal?": {
+        "description": "Checks if the goal has been met",
+        "example": "e.g. {% if page.donation.has_met_amount_goal? %}"
+      },
+      "show_recent_donor?": {
+        "description": "Checks if the most recent donor should be shown This variable has been deprecated in favor of {% page.show_stream? %}",
+        "example": "e.g. {% if page.donation.show_recent_donor? %}"
+      },
+      "has_donor_goal?": {
+        "description": "Checks if page has a donor goal set",
+        "example": "e.g. {% if page.donation.has_donor_goal? %}"
+      },
+      "has_met_donor_goal?": {
+        "description": "Checks if page has met the donor goal",
+        "example": "e.g. {% if page.donation.has_met_donor_goal? %}"
+      },
+      "form_card_expires_on": {
+        "description": "Field for credit card expiration",
+        "example": "e.g. <![CDATA[ <table> <tr> <td><p><label for=\"donation_card_expires_on\">Expires</label><br>{{ page.donation.form_card_expires_on }}</p></td> <td><p><label for=\"donation_card_verification\">CVV (3-4 digits on back)</label><br>{% text_field \"card_verification\", class:\"text\" %}</p></td> </tr> </table> ]]>"
+      },
+      "max_installments": {
+        "description": "The maximum number of installment payments a donation is allowed to be broken into",
+        "example": "e.g. {{ page.donation.max_installments }}"
+      }
+    },
+    "description": "Donation and Donation (v2) pages"
+  },
+  "page.endorsement": {
+    "slug": "endorsement_page_variables",
+    "title": "Endorsement page variables",
+    "properties": {
+      "content": {
+        "description": "The endorsement text itself, in HTML",
+        "example": "e.g. {{ page.endorsement.content }}"
+      },
+      "content_text": {
+        "description": "The endorsement text itself, in Text",
+        "example": "e.g. {{ page.endorsement.content_text }}"
+      },
+      "intro": {
+        "description": "Intro to endorsement",
+        "example": "e.g. {{ page.endorsement.intro }}"
+      },
+      "goal": {
+        "description": "Displays goal for endorsement if one is set",
+        "example": "e.g. {{ page.endorsement.goal }}"
+      },
+      "endorsements_count": {
+        "description": "Total number of signatures for endorsement",
+        "example": "e.g. {{ page.endorsement.signatures_count | number_with_commas }}"
+      },
+      "has_goal?": {
+        "description": "Checks if the endorsement has a goal set",
+        "example": "eg {% if page.endorsement.has_goal? %} {% endif %}"
+      },
+      "has_met_goal?": {
+        "description": "Checks if the endorsement goal has been met",
+        "example": "e.g. {% if page.endorsement.has_met_goal? %} {% endif %}"
+      },
+      "percent_of_goal": {
+        "description": "Percent of goal met",
+        "example": "e.g. {{ page.endorsement.percent_of_goal }}"
+      },
+      "is_volunteer?": {
+        "description": "Checks if endorsement is configured to ask for volunteers"
+      },
+      "is_image?": {
+        "description": "Ask for an image to upload?",
+        "example": "e.g. {% if page.endorsement.is_image? %}{% endif %}"
+      },
+      "require_image?": {
+        "description": "Is an image required? Like for an image only endorsement",
+        "example": "e.g. {% if page.endorsement.require_image? %}{% endif %}"
+      },
+      "is_address?": {
+        "description": "Checks if endorsement is configured to ask for an address"
+      },
+      "require_address?": {
+        "description": "Checks if an address is required to sign endorsement",
+        "example": "e.g. See page.endorsement.require_address? variable in is_address? example above"
+      },
+      "is_endorsed?": {
+        "description": "Checks if the person has already endorsed=",
+        "example": "e.g. {% if page.endorsement.is_endorsed? %}"
+      },
+      "current_endorsement": {
+        "description": "If the current user has endorsed, useful for deleting it",
+        "example": "e.g. {{ page.endorsement.current_endorsement | delete_link message: \"Remove endorsement\" }}",
+        "type": "endorsement"
+      },
+      "endorsements": {
+        "description": "Paginated array of endorsements done from this page, sorted by most recent. Limits to 25 endorsements.",
+        "example": "e.g. {% for endorsement in page.endorsement.endorsements %}{{ endorsement.signup.published_name }}{% endfor %}"
+      },
+      "endorsements_no_pagination": {
+        "description": "Non-paginated array of endorsements done from this page, sorted by most recent. Limits to 100 endorsements.",
+        "example": "e.g. {% for endorsement in page.endorsement.endorsements_no_pagination %}{{ endorsement.signup.published_name }}{% endfor %}"
+      },
+      "endorsements_with_images": {
+        "description": "Array of endorsements that have images"
+      },
+      "featured_endorsements": {
+        "description": "Array of endorsements that have been featured"
+      },
+      "featured_endorsements_with_images": {
+        "description": "Array of endorsements that have images and have been featured"
+      },
+      "featured_endorsements_without_images": {
+        "description": "Array of endorsements that don't have images and have been featured"
+      },
+      "organization_endorsements": {
+        "description": "Array of endorsements from organizations"
+      },
+      "organization_endorsements_with_images": {
+        "description": "Array of endorsements from organizations with images"
+      },
+      "featured_organization_endorsements": {
+        "description": "Array of endorsements from organizations that have been featured"
+      },
+      "featured_organization_endorsements_with_images": {
+        "description": "Array of endorsements from organizations with images that have been featured"
+      },
+      "recent_endorsers": {
+        "description": "array of signup objects"
+      },
+      "recent_endorsers_with_pictures": {
+        "description": "array of signup objects"
+      },
+      "random_endorsers": {
+        "description": "array of signup objects"
+      },
+      "random_endorsers_with_pictures": {
+        "description": "array of signup objects"
+      }
+    }
+  },
+  "page.event": {
+    "slug": "event_page_variables",
+    "title": "Event page variables",
+    "properties": {
+      "content": {
+        "description": "Displays content specified in page's admin section",
+        "example": "e.g. {{ page.event.content }}"
+      },
+      "event content": {
+        "description": "Displays the event content",
+        "example": "e.g. {{ event.event.content }}"
+      },
+      "local_start_at": {
+        "description": "Date and time when event will begin",
+        "example": "e.g. {{ page.event.local_start_at | date: '%B %d, %Y at %I:%M %p' }}"
+      },
+      "local_end_at": {
+        "description": "Date and time when event will end",
+        "example": "e.g. {{ page.event.local_end_at | date: '%B %d, %Y at %I:%M %p' }}"
+      },
+      "time_zone": {
+        "description": "?",
+        "example": "e.g."
+      },
+      "is_multi_day?": {
+        "description": "Does the event span multiple days?",
+        "example": "e.g. {% if page.event.is_multi_day? %}"
+      },
+      "days_until": {
+        "description": "Number of days until the event",
+        "example": "e.g. {{ page.event.days_until }}"
+      },
+      "duration_in_seconds": {
+        "description": "?",
+        "example": "e.g."
+      },
+      "duration": {
+        "description": "Length of time the event will last",
+        "example": "e.g. 3 hours 25 minutes"
+      },
+      "user_ticket_price": {},
+      "user_ticket_price_with_currency": {},
+      "user_ticket_currency": {},
+      "user_ticket_purchase_url": {},
+      "is_ticket_required?": {
+        "description": "Checks if a ticket is required",
+        "example": "e.g. {% if page.event.is_ticket_required? %}"
+      },
+      "ticket_levels": {
+        "description": "Displays ticket levels",
+        "example": "e.g. <![CDATA[ {% for ticket_level in page.event.ticket_levels %} <p> {{ ticket_level.form_quantity }} {% if ticket_level.description.size > 0 %} <br/> {{ ticket_level.description }} {% endif %} </p> {% endfor %} ]]>",
+        "type": "event_ticket_level"
+      },
+      "is_location?": {
+        "description": "Checks if the event has a physical address",
+        "example": "e.g. {% if page.event.is_location? %}"
+      },
+      "has_venue?": {
+        "description": "Checks if the event has a venue defined",
+        "example": "e.g. {% if page.event.has_venue? %}"
+      },
+      "venue_name": {
+        "description": "Displays the venue name",
+        "example": "e.g. {{ event.page.venue_name }}"
+      },
+      "venue_address": {
+        "description": "Venue address object",
+        "example": "e.g. {{ event.page.venue_address.one_line }}",
+        "type": "address"
+      },
+      "has_contact?": {},
+      "contact_name": {},
+      "contact_email": {},
+      "is_contact_email_private?": {},
+      "has_public_contact_email?": {},
+      "contact_phone_number": {},
+      "is_contact_phone_private?": {},
+      "has_public_contact_phone_number?": {},
+      "is_private?": {
+        "description": "Checks if the event is private",
+        "example": "e.g. {% if page.event.is_private? %}"
+      },
+      "accept_rsvps?": {
+        "description": "Whether people can RSVP for this event",
+        "example": "e.g. {% if page.event.accept_rsvps? %}"
+      },
+      "allow_guests?": {
+        "description": "Whether RSVPs are allowed to bring guests",
+        "example": "e.g."
+      },
+      "show_guests?": {
+        "description": "Checks if guests should be displayed",
+        "example": "e.g. {% if page.event.show_guests? and page.event.rsvps_count > 0 %}"
+      },
+      "has_facebook?": {
+        "description": "Is this event on Facebook",
+        "example": "e.g."
+      },
+      "facebook_url": {
+        "description": "URL for event on Facebook",
+        "example": "e.g."
+      },
+      "has_meetup?": {
+        "description": "Is this event on Meetup",
+        "example": "e.g."
+      },
+      "meetup_url": {
+        "description": "URL for event on Meetup",
+        "example": "e.g."
+      },
+      "is_shifts?": {
+        "description": "Checks if the event should ask for shifts",
+        "example": "e.g.{% if page.event.is_shifts? %}"
+      },
+      "shifts": {
+        "description": "Array of shifts for event (sorted by oldest first)",
+        "example": "e.g.{% for shift in page.event.shifts %}"
+      },
+      "shifts_grouped_by_day": {
+        "description": "Array of days of shifts",
+        "example": "e.g.{% for day in page.event.shifts_grouped_by_day %}"
+      },
+      "require_phone?": {
+        "description": "Require the RSVP to provide a phone number",
+        "example": "e.g."
+      },
+      "require_address?": {
+        "description": "Require the RSVP to provide an address",
+        "example": "e.g."
+      },
+      "home_address": {
+        "description": "Allows input to discrete home address fields (address1, address2, address3, city, state, zip, county, country_code) instead of submitted_address",
+        "example": "e.g. <![CDATA[ <div class=\"span12\"> <label for=\"event_submitted_address1\">Street</label>{% text_field \"home_address.address1\", class:\"text\" %} </div> ]]>"
+      },
+      "billing_address": {
+        "description": "Allows input to discrete billing address fields (address1, address2, address3, city, state, zip, county, country_code) instead of submitted_address"
+      },
+      "work_address": {
+        "description": "Allows input to discrete work address fields (address1, address2, address3, city, state, zip, county, country_code) instead of submitted_address"
+      },
+      "mailing_address": {
+        "description": "Allows input to discrete mailing address fields (address1, address2, address3, city, state, zip, county, country_code) instead of submitted_address"
+      },
+      "is_volunteers?": {
+        "description": "Checks if the page is asking for volunteers",
+        "example": "e.g. <![CDATA[ {% if page.event.is_volunteers? %} {% if request.logged_in? == false or request.current_signup.is_volunteer == false %} <p> <label for=\"event_rsvp_is_volunteer\">{% check_box \"is_volunteer\", class:\"checkbox\" %} I want to volunteer</label> </p> {% endif %} ]]>"
+      },
+      "is_hosts?": {
+        "description": "Checks if the event has a host defined",
+        "example": "e.g. {% if page.event.is_hosts? or request.current_recruiter %}"
+      },
+      "hosts": {
+        "description": "An array of event host objects"
+      },
+      "rsvps": {
+        "description": "An array of event RSVP objects"
+      },
+      "rsvps_count": {
+        "description": "Number of RSVPs for an event",
+        "example": "e.g. {{ page.event.rsvps_count }}"
+      },
+      "is_rsvped?": {
+        "description": "Checks if the user has RSVPed",
+        "example": "e.g. {% if page.event.is_rsvped? %}"
+      },
+      "current_rsvp?": {
+        "description": "Checks if the user has already RSVPed",
+        "example": "e.g. {{ page.event.current_rsvp | delete_link message: \"Cancel RSVP\" }}"
+      },
+      "maximum_capacity": {
+        "description": "Max capacity for an event",
+        "example": "e.g. {{ page.event.maximum_capacity }}"
+      },
+      "is_maximum_capacity?": {
+        "description": "Checks if the event is at max capacity",
+        "example": "e.g. {% if page.event.is_maximum_capacity? %}"
+      }
+    }
+  },
+  "page.faq": {
+    "slug": "faq_page_variables",
+    "title": "FAQ page variables",
+    "properties": {
+      "content": {
+        "description": "Displays content specified in page's admin section",
+        "example": "e.g. {{ page.faq.content }}"
+      }
+    }
+  },
+  "page.feedback": {
+    "slug": "feedback_page_variables",
+    "title": "Feedback page variables",
+    "properties": {
+      "first_name": {
+        "description": "Collect the users first name in feedback form",
+        "example": "e.g. <![CDATA[ <label for=\"feedback_first_name\">First Name</label> <br /> {% text_field \"first_name\", class:\"text\" %} ]]>"
+      },
+      "last_name": {
+        "description": "Collect the users last name",
+        "example": "e.g. Same as first_name, except with last_name variable"
+      },
+      "email": {
+        "description": "Collect the users email",
+        "example": "e.g. Same as first_name, except with email variable"
+      },
+      "name_or_email": {
+        "description": "?",
+        "example": "e.g."
+      },
+      "submitted_address": {
+        "description": "Collect the users address",
+        "example": "e.g. Same as first_name, except with submitted_address variable"
+      },
+      "mobile_number": {
+        "description": "Collect the users mobile number",
+        "example": "e.g. Same as first_name, except with mobile_number variable"
+      },
+      "is_volunteer": {
+        "description": "Ask if user wants to volunteer",
+        "example": "e.g. <![CDATA[ <label for=\"feedback_is_volunteer\">{% check_box \"is_volunteer\", class:\"checkbox\" %} I want to volunteer ]]>"
+      },
+      "email_opt_in": {
+        "description": "Ask if user wants to opt-in to emails",
+        "example": "e.g. Same as is_volunteer, except with email_opt_in variable"
+      },
+      "is_private": {
+        "description": "Ask if user wants their feedback to be private",
+        "example": "e.g. Same as is_volunteer, except with is_private variable"
+      },
+      "content": {
+        "description": "Displays content specified in page's admin section",
+        "example": "e.g. {{ page.feedback.content }}"
+      }
+    }
+  },
+  "page.invoice": {
+    "slug": "invoice_page_variables",
+    "title": "Invoice page variables",
+    "properties": {
+      "content": {
+        "description": "Displays content specified in page's admin section",
+        "example": "e.g. {{ page.invoice.content }}"
+      },
+      "merchant_account": {
+        "description": "Merchant or bank account",
+        "example": "e.g. {{ page.invoice.merchant_account.accepted_card_icons }}",
+        "type": "merchant_account"
+      },
+      "outstanding_invoices": {
+        "description": "An array of all the outstanding invoices on this invoice page for the current logged in user.",
+        "example": "e.g. {% for invoice in outstanding_invoices %}"
+      },
+      "closed_invoices": {
+        "description": "An array of all the outstanding invoices on this invoice page for the user who is currently logged in.",
+        "example": "e.g. {% for invoice in closed_invoices %}"
+      },
+      "name": {
+        "description": "The name of the invoice item (e.g. Rentals ).",
+        "example": "e.g. {{ item.name }}"
+      },
+      "name_with_amount_due": {
+        "description": "The invoice name and amount with discount applied(e.g. Invoice - $12.37).",
+        "example": "e.g. {{ invoice.name_with_amount_due }}"
+      },
+      "id": {
+        "description": "The invoice id.",
+        "example": "e.g. {{ invoice.id }}"
+      },
+      "status": {
+        "description": "The invoice id.",
+        "example": "e.g. {{ invoice.id }}"
+      },
+      "amount_format": {
+        "description": "The amount of the invoice due without discounts applied formatted (e.g. $12.50).",
+        "example": "e.g. {{ invoice.amount_format }}"
+      },
+      "amount_due_format": {
+        "description": "The amount of the invoice with discounts applied and formatted (e.g. $12.37).",
+        "example": "e.g. {{ invoice.amount_due_format }}"
+      },
+      "amount_with_discount_format": {
+        "description": "The amount of the invoice with discounts applied and formatted (e.g. $12.37).",
+        "example": "e.g. {{ invoice.amount_with_discount_format }}"
+      },
+      "closed_at": {
+        "description": "The date the invoice was closed (e.g. Nov 13 2015)",
+        "example": "e.g. {{ invoice.closed_at | date_to_string }}"
+      },
+      "sent_at": {
+        "description": "The date the invoice was sent to the customer (e.g. Nov 9 2015)",
+        "example": "e.g. {{ invoice.sent_at | date_to_string }}"
+      },
+      "pdf_url": {
+        "description": "A url for the PDF receipt that was generated for the invoice.",
+        "example": "<![CDATA[<a href=\"{{ invoice.pdf_url }}\">Reciept</a>]]>"
+      },
+      "is_closed?": {
+        "description": "Checks if the invoice is closed.",
+        "example": "e.g. {{ invoice.is_closed? }}"
+      },
+      "is_overdue?": {
+        "description": "Checks if the invoice is overdue.",
+        "example": "e.g. {{ invoice.is_overdue? }}"
+      },
+      "items": {
+        "description": "An array of all the items in this invoice.",
+        "example": "e.g. {% for item in invoice.items %}"
+      },
+      "quantity": {
+        "description": "The quantity of this invoice item.",
+        "example": "e.g. {{ item.quantity }}"
+      },
+      "amount": {
+        "description": "The cost for this invoice item (e.g. $29.99 ).",
+        "example": "e.g. {{ item.amount }}"
+      }
+    },
+    "description": "These variables are for the invoice page itself."
+  },
+  "page.leaderboard": {
+    "slug": "leaderboard_page_variables",
+    "title": "Leaderboard page variables",
+    "properties": {
+      "content": {
+        "description": "Displays content specified in page's admin section",
+        "example": "e.g. {{ page.leaderboard.content }}"
+      }
+    }
+  },
+  "page.moneybomb": {
+    "slug": "moneybomb_page_variables",
+    "title": "Moneybomb page variables",
+    "properties": {
+      "content": {
+        "description": "Displays content specified in page's admin section",
+        "example": "e.g. {{ page.moneybomb.content }}"
+      },
+      "is_active?": {
+        "description": "Is the moneybomb active right now?"
+      },
+      "is_past?": {
+        "description": "Has the moneybomb passed?"
+      },
+      "seconds_until": {
+        "description": "Number of seconds until the moneybomb starts (for the countdown)"
+      },
+      "seconds_left": {
+        "description": "Number of seconds until the moneybomb ends. It will be zero if the moneybomb is not active yet"
+      },
+      "has_donation_page?": {
+        "description": "Is there a specific donation page specified?"
+      },
+      "donation_page": {
+        "description": "Page they should donate on when the moneybomb is active",
+        "type": "page"
+      },
+      "minimum_amount": {
+        "description": "Minimum pledge amount",
+        "example": "e.g."
+      },
+      "amount_goal": {
+        "description": "Pledge goal for page",
+        "example": "e.g. Amount of money set as the goal for the donation page"
+      },
+      "has_amount_goal?": {
+        "description": "Checks if page has a pledge goal set",
+        "example": "e.g. {% if page.moneybomb.has_amount_goal? %}"
+      },
+      "has_met_amount_goal?": {
+        "description": "Checks if the goal has been met",
+        "example": "e.g. {% if page.moneybomb.has_met_amount_goal? %}"
+      },
+      "percent_of_amount_goal": {
+        "description": "Percent of amount goal met",
+        "example": "e.g. {{ page.moneybomb.percent_of_amount_goal }}"
+      },
+      "pledger_goal": {
+        "description": "Pledger goal",
+        "example": "e.g. The number of pledgers set as the goal"
+      },
+      "has_pledger_goal?": {
+        "description": "Checks if page has a pledger goal set",
+        "example": "e.g. {% if page.moneybomb.has_pledger_goal? %}"
+      },
+      "has_met_pledger_goal?": {
+        "description": "Checks if page has met the pledger goal",
+        "example": "e.g. {% if page.moneybomb.has_met_pledger_goal? %}"
+      },
+      "percent_of_pledger_goal": {
+        "description": "Percentage of pledger goal met",
+        "example": "e.g. {{ page.moneybomb.percent_of_pledger_goal }}"
+      },
+      "amounts": {
+        "description": "Array of default donation amounts"
+      },
+      "form_amount_options": {
+        "description": "Amounts people are encouraged to pledge",
+        "example": "e.g. <![CDATA[ {{ page.moneybomb.form_amount_options }} ]]>"
+      }
+    }
+  },
+  "page.petition": {
+    "slug": "petition_page_variables",
+    "title": "Petition page variables",
+    "properties": {
+      "content": {
+        "description": "The petition text itself, in HTML",
+        "example": "e.g. {{ page.petition.content }}"
+      },
+      "content_text": {
+        "description": "The petition text itself, in Text",
+        "example": "e.g. {{ page.petition.content_text }}"
+      },
+      "intro": {
+        "description": "Intro to petition",
+        "example": "e.g. {{ page.petition.intro }}"
+      },
+      "signature_name": {
+        "description": "What to call the signature (ie \"signature\" or \"endorsement\")",
+        "example": "e.g. {{ page.petition.signature_name }}"
+      },
+      "goal": {
+        "description": "Displays goal for petition if one is set",
+        "example": "e.g. {{ page.petition.goal }}"
+      },
+      "signatures_count": {
+        "description": "Total number of signatures for petition",
+        "example": "e.g. {{ page.petition.signatures_count | number_with_commas }}"
+      },
+      "has_goal?": {
+        "description": "Checks if the petition has a goal set",
+        "example": "e.g. <![CDATA[ {% if page.petition.has_goal? %} {% assign thermo_width = 200 %} <div style=\"float: left; width: {{ thermo_width }}px;\"> <div class=\"thermo_donate_container\"> <div class=\"padbottomless\"> <div class=\"thermometer_progress_text\" style=\"width: {{ thermo_width }}px;\"> {% if page.petition.signatures_count < 2 %} JUST STARTED {% else %} {{ page.petition.signatures_count | number_with_commas }} SIGNATURES {% endif %} </div> <div align=\"left\" class=\"thermometer_background\" style=\"width: {{ thermo_width }}px;\"> <div class=\"thermometer_progress\" style=\"width: {{ page.petition.percent_of_goal | times:thermo_width }}px;\"></div> </div> </div> </div> </div> <div style=\"float: left;\"> <div class=\"horizontalgoal\">GOAL: {{ page.petition.goal | number_with_commas }} signatures</div> </div> <div style=\"clear: left;\"></div> {% elsif page.petition.signatures_count > 4 %} <div class=\"horizontalgoal\" style=\"padding: 0px;\">{{ page.petition.signatures_count | number_with_commas }} signatures</div> {% endif %} ]]>"
+      },
+      "has_met_goal?": {
+        "description": "Checks if the petition goal has been met",
+        "example": "e.g. {% if page.petition.has_met_goal? %}"
+      },
+      "percent_of_goal": {
+        "description": "Percent of goal met",
+        "example": "e.g. {{ page.petition.percent_of_goal }}"
+      },
+      "is_volunteer?": {
+        "description": "Checks if petition is configured to ask for volunteers",
+        "example": "e.g. <![CDATA[ {% if page.petition.is_volunteer? and request.logged_in? == false or request.current_signup.is_volunteer == false %} <p><label for=\"petition_signature_is_volunteer\">{% check_box \"is_volunteer\", class:\"checkbox\" %} I want to volunteer</label></p> {% endif %} ]]>"
+      },
+      "is_image?": {
+        "description": "Ask for an image to upload?",
+        "example": "e.g. {% if page.petition.is_image? %}{% endif %}"
+      },
+      "require_image?": {
+        "description": "Is an image required? Like for an image only petition",
+        "example": "e.g. {% if page.petition.require_image? %}{% endif %}"
+      },
+      "is_address?": {
+        "description": "Checks if petition is configured to ask for an address",
+        "example": "e.g. <![CDATA[ {% if page.petition.is_address? %} <p><label for=\"petition_signature_submitted_address\">Street address, City, State, Postal code{% if page.petition.require_address? == false %} (optional){% endif %}</label><br>{% text_field \"submitted_address\", class:\"text\" %}</p> {% endif %} ]]>"
+      },
+      "require_address?": {
+        "description": "Checks if an address is required to sign petition",
+        "example": "e.g. See page.petition.require_address? variable in is_address? example above"
+      },
+      "home_address": {
+        "description": "Allows input to discrete home address fields (address1, address2, address3, city, state, zip, county, country_code) instead of submitted_address",
+        "example": "e.g. <![CDATA[ <div class=\"span12\"> <label for=\"petition_submitted_address1\">Street</label>{% text_field \"home_address.address1\", class:\"text\" %} </div> ]]>"
+      },
+      "billing_address": {
+        "description": "Allows input to discrete billing address fields (address1, address2, address3, city, state, zip, county, country_code) instead of submitted_address"
+      },
+      "work_address": {
+        "description": "Allows input to discrete work address fields (address1, address2, address3, city, state, zip, county, country_code) instead of submitted_address"
+      },
+      "mailing_address": {
+        "description": "Allows input to discrete mailing address fields (address1, address2, address3, city, state, zip, county, country_code) instead of submitted_address"
+      },
+      "is_signed?": {
+        "description": "Checks if the user has already signed the petition",
+        "example": "e.g. {% if page.petition.is_signed? %}"
+      },
+      "current_signature": {
+        "description": "If the current user has signed the petition, useful for deleting it",
+        "example": "e.g. {{ page.petition.current_signature | delete_link message: \"Remove signature\" }}",
+        "type": "petition_signature"
+      },
+      "signatures_with_images": {
+        "description": "array of petition_signature objects"
+      },
+      "recent_signers": {
+        "description": "array of signup objects"
+      },
+      "recent_signers_with_pictures": {
+        "description": "array of signup objects"
+      },
+      "random_signers": {
+        "description": "array of signup objects"
+      },
+      "random_signers_with_pictures": {
+        "description": "array of signup objects"
+      }
+    }
+  },
+  "page.press_release": {
+    "slug": "press_release_page_variables",
+    "title": "Press release page variables",
+    "properties": {
+      "content": {
+        "description": "Content of release",
+        "example": "e.g. {{ page.press_release.content }}"
+      }
+    }
+  },
+  "page.question": {
+    "slug": "question_page_variables",
+    "title": "Question page variables",
+    "properties": {
+      "content": {
+        "description": "The extended part of the question",
+        "example": "e.g. {{ page.question.content }}"
+      },
+      "answer": {
+        "description": "The answer",
+        "example": "e.g. {{ page.question.answer }}"
+      }
+    }
+  },
+  "page.rule": {
+    "slug": "rule_page_variables",
+    "title": "Rule page variables",
+    "properties": {
+      "position": {
+        "description": "Rule number",
+        "example": "e.g. {{ page.rule.position }}"
+      },
+      "content": {
+        "description": "The intro text in HTML",
+        "example": "e.g. {{ page.rule.content }}"
+      },
+      "content_text": {
+        "description": "The intro text in text",
+        "example": "e.g. {{ page.rule.content_text }}"
+      },
+      "content_for_mailing": {
+        "description": "The intro text suitable for mailings",
+        "example": "e.g. {{ page.rule.content_for_mailing }}"
+      },
+      "rules": {
+        "description": "Array of rule objects",
+        "example": "e.g. <![CDATA[ {% for rule in page.rule.rules %} {{ rule.position }}. {{ rule.name }}<br/> {{ rule.content }} {% endfor %} ]]>"
+      }
+    }
+  },
+  "page.signup": {
+    "slug": "signup_page_variables",
+    "title": "Signup page variables",
+    "properties": {
+      "content": {
+        "description": "Displays content specified in page's admin section",
+        "example": "e.g. {{ page.signup.content }}"
+      },
+      "is_volunteers?": {
+        "description": "Ask for volunteers?"
+      },
+      "has_optional_tags?": {
+        "description": "Prompt the person to choose from a set of optional tags?"
+      },
+      "optional_tags": {
+        "description": "Array of optional tags to choose from"
+      },
+      "optional_tag_list": {
+        "description": "Comma separated list of optional tags"
+      },
+      "is_all_info_collected?": {
+        "description": "Displays content specified in page's admin section",
+        "example": "e.g. {% if page.signup.is_all_info_collected? == false %} show the form here {% endif %}"
+      }
+    }
+  },
+  "page.suggestion": {
+    "slug": "suggestion_page_variables",
+    "title": "Suggestion page variables",
+    "properties": {
+      "page_headline": {
+        "description": "Collects title of users suggestion",
+        "example": "e.g. <![CDATA[ {% form_for suggestion_page %}2 <div class=\"form_wrap\"> <div class=\"form\"> <div class=\"form_errors\">{% error_messages_for suggestion_page %}</div> <p><label for=\"suggestion_page_page_headline\">Whats your suggestion?</label><br>{% text_field \"page_headline\", class:\"text\" %}</p> <p><label for=\"suggestion_page_content\">Further explanation<br>{% text_area \"content\", class:\"textarea\" %} <div class=\"padtopless\"> {% submit_tag \"Post suggestion\", class:\"submit-button\" %} </div> </div> {% endform_for %} ]]>"
+      },
+      "comment": {
+        "description": "Displays content of comment",
+        "example": "e.g. <![CDATA[ {% form_for comment %} <div class=\"form_errors\">{% error_messages_for comment %}</div> <br>{% text_area \"content\", class:\"textarea\" %} <div class=\"padtopless\"> {% submit_tag \"Post your reaction\", class:\"submit-button\" %} </div> {% endform_for %} ]]>"
+      },
+      "content": {
+        "description": "Displays content of suggestion",
+        "example": "e.g. {{ page.suggestion.content }}"
+      },
+      "image_url": {
+        "description": "Link to uploaded suggestion picture",
+        "example": "e.g. {{ page.suggestion.image_url }}"
+      },
+      "suggestion_box_taggings": {
+        "description": "Array of page_tagging objects for the parent suggestion box",
+        "example": "e.g."
+      },
+      "suggestion_box_tag_names": {
+        "description": "Array of tag names for the parent's suggestion box",
+        "example": "e.g."
+      },
+      "signup_taggings": {
+        "description": "Array of page_signup_tagging objects of how people have tagged this suggestion",
+        "example": "e.g."
+      },
+      "signup_tag_names": {
+        "description": "Array of tag names that people have tagged this suggestion with",
+        "example": "e.g."
+      },
+      "tag_list_html": {
+        "description": "Displays the list of tags available",
+        "example": "e.g. {{ page.suggestion.tag_list_html }}"
+      },
+      "admin_edit_url": {
+        "description": "Link to suggestion's admin page",
+        "example": "e.g. <![CDATA[ <a href=\"{{ page.suggestion.admin_edit_url }}\">Edit suggestion</a> ]]>"
+      }
+    }
+  },
+  "page.suggestion_box": {
+    "slug": "suggestion_box_page_variables",
+    "title": "Suggestion Box page variables",
+    "properties": {
+      "content": {
+        "description": "Intro blurb"
+      },
+      "tag_list": {
+        "description": "Comma separate list of tags",
+        "example": "e.g. good, bad, brilliant, incompetent"
+      },
+      "tag_names": {
+        "description": "Array of tag names"
+      },
+      "number": {
+        "description": "Number of suggestions to show on the page"
+      },
+      "tagged_suggestions": {
+        "description": "Array of page_tagging objects with suggestions attached"
+      },
+      "most_recent_suggestions": {
+        "description": "Array of page objects for this box's suggestions"
+      }
+    }
+  },
+  "page.survey": {
+    "slug": "survey_page_variables",
+    "title": "Survey page variables",
+    "properties": {
+      "content": {
+        "description": "Displays current survey question",
+        "example": "e.g. {{ page.survey.content }}"
+      },
+      "is_responded?": {
+        "description": "Checks if the survey question has already been asked",
+        "example": "e.g. {% if page.survey.is_responded? %}"
+      },
+      "current_survey_response": {
+        "description": "The survey_response object if they are currently filling out a survey"
+      },
+      "is_next_question?": {
+        "description": "Checks if there is another question in the survey",
+        "example": "e.g. {% if page.survey.is_next_question? %}"
+      },
+      "next_question": {
+        "description": "Accesses the next question",
+        "example": "e.g. <![CDATA[ {{ page.survey.next_question.form }} <h3>{{ page.survey.next_question.content }}</h3> <div class=\"padtop\"> {% for possible_response in page.survey.next_question.possible_responses %} {{ possible_response.radio_button }} {{ possible_response.name }}<br/> {% endfor %} ]]>"
+      }
+    }
+  },
+  "page.volunteer_signup": {
+    "slug": "volunteer_signup_page_variables",
+    "title": "Volunteer Signup page variables",
+    "properties": {
+      "content": {
+        "description": "Displays content specified in page's admin section",
+        "example": "e.g. {{ page.volunteer_signup.content }}"
+      },
+      "volunteer_types": {
+        "description": "Volunteer positions users can signup for, an array of volunteer_type objects",
+        "example": "e.g. <![CDATA[ {% for volunteer_type in page.volunteer_signup.volunteer_types %} <p>{% check_box_tag 'volunteer_signup[volunteer_type_ids][]', volunteer_type.id, collection:volunteer_signup.volunteer_type_ids, member:volunteer_type.id, class:\"checkbox\" %} {{ volunteer_type.name }}</p> {% endfor %} {% endform_for %} ]]>"
+      },
+      "home_address": {
+        "description": "Allows input to discrete home address fields (address1, address2, address3, city, state, zip, county, country_code) instead of submitted_address",
+        "example": "e.g. <![CDATA[ <div class=\"span12\"> <label for=\"volunteer_signup_submitted_address1\">Street</label>{% text_field \"home_address.address1\", class:\"text\" %} </div> ]]>"
+      },
+      "billing_address": {
+        "description": "Allows input to discrete billing address fields (address1, address2, address3, city, state, zip, county, country_code) instead of submitted_address"
+      },
+      "work_address": {
+        "description": "Allows input to discrete work address fields (address1, address2, address3, city, state, zip, county, country_code) instead of submitted_address"
+      },
+      "mailing_address": {
+        "description": "Allows input to discrete mailing address fields (address1, address2, address3, city, state, zip, county, country_code) instead of submitted_address"
+      }
+    }
+  },
+  "page.vote_pledge": {
+    "slug": "vote_pledge_page_variables",
+    "title": "Vote pledge page variables",
+    "properties": {
+      "content": {
+        "description": "Displays the intro blurb specified in page's admin section",
+        "example": "e.g. {{ page.vote_pledge.content }}"
+      },
+      "yes_content": {
+        "description": "Displays the yes blurb specified in the page's admin section",
+        "example": "e.g. {{ page.vote_pledge.yes_content }}"
+      },
+      "unsure_content": {
+        "description": "Displays the unsure blurb specified in the page's admin section",
+        "example": "e.g. {{ page.vote_pledge.unsure_content }}"
+      },
+      "no_content": {
+        "description": "Displays the no blurb specified in the page's admin section",
+        "example": "e.g. {{ page.vote_pledge.no_content }}"
+      },
+      "yes_goal": {
+        "description": "Displays the yes goal, if one is set",
+        "example": "e.g. {{ page.vote_pledge.yes_goal }}"
+      },
+      "yes_votes_count": {
+        "description": "Displays the total number of yes votes",
+        "example": "e.g. {{ page.vote_pledge.yes_votes_count }}"
+      },
+      "unsure_votes_count": {
+        "description": "Displays the total number of unsure votes",
+        "example": "e.g. {{ page.vote_pledge.unsure_votes_count }}"
+      },
+      "no_votes_count": {
+        "description": "Displays the total number of no votes",
+        "example": "e.g. {{ page.vote_pledge.no_votes_count }}"
+      },
+      "votes_count": {
+        "description": "Displays the total number of votes -- yes, no, and unsure",
+        "example": "e.g. {{ page.vote_pledge.votes_count }}"
+      },
+      "has_yes_goal?": {
+        "description": "Checks if a goal is set",
+        "example": "e.g. {% if has_yes_goal? %}"
+      },
+      "has_met_yes_goal?": {
+        "description": "Checks if the goal has been met",
+        "example": "e.g. {% if page.vote_pledge.has_met_yes_goal? %}"
+      },
+      "percent_of_yes_goal": {
+        "description": "Percentage of goal met, for thermometer",
+        "example": "e.g. {{ page.vote_pledge.percent_of_yes_goal }}"
+      },
+      "is_pledged?": {
+        "description": "Checks if the user has pledged",
+        "example": "e.g. {% if page.vote_pledge.is_pledged? %}"
+      },
+      "vote_pledges": {
+        "description": "Array of vote_pledges, everyone who pledged including yes/no/unsure. It will not include people who wanted their pledge kept private."
+      },
+      "yes_vote_pledges": {
+        "description": "Array of vote_pledges, everyone who pledged yes"
+      },
+      "unsure_vote_pledges": {
+        "description": "Array of vote_pledges, everyone who pledged unsure"
+      },
+      "no_vote_pledges": {
+        "description": "Array of vote_pledges, everyone who pledged no"
+      },
+      "current_vote_pledges": {
+        "description": "Checks what the user has pledged",
+        "example": "e.g. {% if page.vote_pledge.current_vote_pledge.is_no? %}",
+        "type": "vote_pledge"
+      },
+      "yes_url": {
+        "description": "URL to go to if someone pledges yes",
+        "example": "e.g. {{ page.vote_pledge.yes_url }}"
+      },
+      "unsure_url": {
+        "description": "URL to go to if someone pledges unsure",
+        "example": "e.g. {{ page.vote_pledge.unsure_url }}"
+      },
+      "no_url": {
+        "description": "URL to go to if someone pledges no",
+        "example": "e.g. {{ page.vote_pledge.no_url }}"
+      }
+    }
+  },
+  "page.voter_registration": {
+    "slug": "voter_registration_page_variables",
+    "title": "Voter Registration page variables",
+    "properties": {
+      "rtv_url": {
+        "description": "Rock the Vote URL",
+        "example": "e.g. {{ page.voter_registration.rtv_url }}"
+      },
+      "rtv_id": {
+        "description": "Rock the Vote id",
+        "example": "e.g. <![CDATA[ <iframe src=\"https://register.rockthevote.com/registrants/new?partner={{ page.voter_registration.rtv_id }}&source=embed-rtv234x60v1\" width=\"615\" height=\"800\"></iframe> ]]>"
+      }
+    },
+    "description": "Please note that the voter registration Rock the Vote website page type has been deprecated and some of its featured disabled. We recommend that the you not use the website page type."
+  },
+  "password": {
+    "slug": "password_variables",
+    "title": "Password variables",
+    "properties": {
+      "activation_code": {
+        "description": "Users unique activation code",
+        "example": "e.g. {{ password.activation_code }}"
+      },
+      "password": {
+        "description": "Password input field",
+        "example": "e.g. {% password_field \"password\", class:\"text\" %}"
+      },
+      "password_confirmation": {
+        "description": "Password confirmation input field",
+        "example": "e.g. {% password_field \"password_confirmation\", class:\"text\" %}"
+      },
+      "signup": {
+        "description": "U?",
+        "example": "e.g."
+      }
+    }
+  },
+  "password_reset": {
+    "slug": "password_reset_variables",
+    "title": "Password reset variables",
+    "properties": {
+      "email": {
+        "description": "Email to send reset instructions to",
+        "example": "e.g. <![CDATA[ {% form_for password_reset %} <div class=\"form_errors\">{% error_messages_for password_reset %}</div> <p><label for=\"password_reset_email\">Email</label><br>{% text_field \"email\", class:\"text\" %}</p> <div class=\"padtop\"> {% submit_tag \"Send password reset instructions\", class:\"submit-button\" %} </div> {% endform_for %} ]]>"
+      }
+    }
+  },
+  "petition_signature": {
+    "slug": "petition_signature_variables",
+    "title": "Petition signature variables",
+    "properties": {
+      "First name": {
+        "description": "signup.first_name"
+      },
+      "Last name": {
+        "description": "signup.last_name"
+      },
+      "content": {
+        "description": "Comment left with signature"
+      },
+      "has_image?": {
+        "description": "Is there an image on this signature?"
+      },
+      "image_url": {
+        "description": "URL to image as it was uploaded"
+      },
+      "image_height": {
+        "description": "Height of uploaded image"
+      },
+      "image_width": {
+        "description": "Width of uploaded image"
+      },
+      "medium_image_url": {
+        "description": "URL cropped to 73px wide or 73px high, whichever is greater, but keeping original aspect ratio"
+      },
+      "medium_square_image_url": {
+        "description": "URL to 73x73 square image"
+      },
+      "large_image_url": {
+        "description": "URL cropped to 140px wide or 140px high, whichever is greater, but keeping original aspect ratio"
+      },
+      "large_square_image_url": {
+        "description": "URL to 140x140 square image"
+      }
+    }
+  },
+  "pledge": {
+    "slug": "pledge_variables",
+    "title": "Pledge variables",
+    "properties": {
+      "signup": {
+        "description": "Person pledging",
+        "type": "signup"
+      },
+      "amount_option_in_cents": {
+        "description": "The amount selected from the radio buttons"
+      },
+      "amount_in_cents": {
+        "description": "Pledged donation amount in cents",
+        "example": "e.g. 1000"
+      },
+      "is_private?": {
+        "description": "Checks if the pledge is private",
+        "example": "e.g. {% if pledge.is.private? %}"
+      },
+      "recruiter": {
+        "description": "Recruiter of pledge. Due to caching issues, this should only be used with these page types: (Donation, Survey, Nation Signup, Invoices, Unsubscribe, and Event).",
+        "example": "e.g. {{ pledge.recruiter }}"
+      },
+      "amount_left_format": {
+        "description": "Remaining unfulfilled amount",
+        "example": "e.g. $16.43"
+      },
+      "tracking_code_slug": {
+        "description": "The tracking code slug"
+      }
+    }
+  },
+  "profile": {
+    "slug": "profile_variables",
+    "title": "Profile variables",
+    "properties": {
+      "id": {
+        "description": "profile's NationBuilder ID",
+        "example": "e.g. 27382"
+      },
+      "username": {
+        "description": "User name",
+        "example": "e.g. jgilliam"
+      },
+      "first_name": {
+        "description": "First name of profile",
+        "example": "e.g. Jim"
+      },
+      "last_name": {
+        "description": "Last name of profile",
+        "example": "e.g. Gilliam"
+      },
+      "first_name_or_friend": {
+        "description": "First name, or \"Friend\" if we don't have one",
+        "example": "e.g. Abe"
+      },
+      "full_name_or_friend": {
+        "description": "Full name or \"Friend\" if we don't have one",
+        "example": "e.g. Abe Lincoln"
+      },
+      "published_name": {
+        "description": "Published full name of profile",
+        "example": "e.g. {{ profile.published_name }}"
+      },
+      "published_first_name": {
+        "description": "Published first name of profile",
+        "example": "e.g. {{ profile.published_first_name }}"
+      },
+      "published_last_name": {
+        "description": "Published last name of profile",
+        "example": "e.g. {{ profile.published_last_name }}"
+      },
+      "published_name_linked": {
+        "description": "Published full name, linked to profile",
+        "example": "e.g. {{ profile.published_name_linked }}"
+      },
+      "published_first_name_linked": {
+        "description": "Published first name, linked to profile",
+        "example": "e.g. {{ profile.published_first_name_linked }}"
+      },
+      "profile_type": {
+        "description": "profile type: 0 is person, 1 is organization",
+        "example": "e.g. {% if profile.signup_type == 1 %}"
+      },
+      "is_person?": {
+        "description": "Checks if the profile is a person",
+        "example": "e.g. {% if profile.is_person? %}"
+      },
+      "is_organization?": {
+        "description": "Checks if the profile is an organization",
+        "example": "e.g. {% if profile.is_organization? %}"
+      },
+      "name_or_email": {
+        "description": "Name or email of profiles",
+        "example": "e.g. {{ profile.name_or_email }}"
+      },
+      "email": {
+        "description": "Email of profile",
+        "example": "e.g. [email protected]"
+      },
+      "emails_to_sentence": {
+        "description": "The profiles emails as a sentence",
+        "example": "e.g. [email protected] and [email protected]"
+      },
+      "description": {
+        "description": "The profile's background text",
+        "example": "e.g. Stephen is a web developer living in Los Angeles"
+      },
+      "born_at_chronic": {
+        "description": "The profile's date of birth",
+        "example": "e.g. {{ profile.born_at_chronic }}"
+      },
+      "sex": {
+        "description": "The profile's sex",
+        "example": "e.g. M"
+      },
+      "party": {
+        "description": "The profile's political party",
+        "example": "e.g. D"
+      },
+      "previous_party": {
+        "description": "The profile's previous political party",
+        "example": "e.g. D"
+      },
+      "demo_name": {
+        "description": "The person's race",
+        "example": "e.g. Martian"
+      },
+      "tags": {
+        "description": "Array of tags for this person",
+        "example": "{% if request.sorta_logged_in? and request.current_profile.tags contains \"fun\" %}They have the \"fun\" tag{% endif %}"
+      },
+      "tag_list": {
+        "description": "Comma separated string of tags for this person"
+      },
+      "tag_list_sentence": {
+        "description": "This person's tags as a sentence",
+        "example": "rain, cats, dogs, and umbrellas"
+      },
+      "submitted_address": {
+        "description": "Address as submitted by them (not normalized at all)",
+        "example": "e.g. 555 figueroa st, los angeles"
+      },
+      "address": {
+        "description": "Primary address of profile",
+        "example": "e.g. {{ profile.address.one_line }}",
+        "type": "address"
+      },
+      "home_address": {
+        "description": "Home address of profile",
+        "example": "e.g. {{ profile.home_address.one_line }}",
+        "type": "address"
+      },
+      "mailing_address": {
+        "description": "Street address of profile",
+        "example": "e.g. {{ profile.mailing_address.one_line }}",
+        "type": "address"
+      },
+      "registered_address": {
+        "description": "Address they are registered to vote at (from Political Force)",
+        "example": "e.g. {{ profile.registered_address.one_line }}",
+        "type": "address"
+      },
+      "work_address": {
+        "description": "Work address",
+        "example": "e.g. {{ profile.work_address.one_line }}",
+        "type": "address"
+      },
+      "phone_number": {
+        "description": "Phone number of profile",
+        "example": "e.g. {{ profile.phone_number }}"
+      },
+      "work_phone_number": {
+        "description": "Work phone number of profile",
+        "example": "e.g. {{ profile.work_phone_number }}"
+      },
+      "mobile_number": {
+        "description": "Mobile number of profile",
+        "example": "e.g. {{ profile.mobile_number }}"
+      },
+      "is_opted_in?": {
+        "description": "Checks if profile is opted in",
+        "example": "e.g. {% if profile.is_opted_in? %}"
+      },
+      "is_supporter?": {
+        "description": "Checks if profile is",
+        "example": "e.g. {% if profile.is_opted_in? %}"
+      },
+      "support_level": {
+        "description": "profile support level, 1-5",
+        "example": "e.g. {{ profile.support_level}}"
+      },
+      "support_level_pretty": {
+        "description": "profile support level wrapped in green/red background",
+        "example": "e.g. {{ profile.support_level_pretty | on_off_button_small }}"
+      },
+      "is_volunteer?": {
+        "description": "Checks if the profile is a volunteer",
+        "example": "e.g. {% if profile.is_volunteer? %}"
+      },
+      "is_volunteer_pretty": {
+        "description": "Volunteer status (includes staff/interns/etc) wrapped in green/red background",
+        "example": "e.g. {{ profile.is_volunteer_pretty | on_off_button_small }}"
+      },
+      "is_profile_searchable?": {
+        "description": "Checks if profile is discoverable by search engines",
+        "example": "e.g. {% if profile.is_profile_searchable? %}"
+      },
+      "is_profile_published?": {
+        "description": "Checks if profile is published on the site",
+        "example": "e.g. {% if profile.is_profile_published? %}"
+      },
+      "is_survey_question_private?": {
+        "description": "Checks if survey question answers is set to private",
+        "example": "e.g. {% if profile.is_survey_question_private? %}"
+      },
+      "is_leaderboardable?": {
+        "description": "Checks if they are included in leaderboards",
+        "example": "e.g. {% if profile.is_leaderboardable? %}"
+      },
+      "employer": {
+        "example": "e.g. {{ profile.employer }}"
+      },
+      "occupation": {
+        "example": "e.g. {{ profile.occupation }}"
+      },
+      "website": {
+        "example": "e.g. {{ profile.website }}"
+      },
+      "bio": {
+        "description": "Bio, usually this is coming from Twitter",
+        "example": "e.g. {{ profile.bio }}"
+      },
+      "has_website?": {
+        "description": "Checks if profile has a website",
+        "example": "e.g. {% if profile.has_website? %}"
+      },
+      "has_bio?": {
+        "description": "Checks if profile has a biography",
+        "example": "e.g. {% if profile.has_bio? %}"
+      },
+      "has_parent?": {
+        "description": "Do they have a point person?",
+        "example": "e.g."
+      },
+      "has_password?": {
+        "description": "Do they have a password?",
+        "example": "e.g. {% if profile.has_password? %}{% endif %}"
+      },
+      "has_mobile?": {
+        "description": "Do they have a cell phone?",
+        "example": "e.g. {% if profile.has_mobile? %}{% endif %}"
+      },
+      "has_phone?": {
+        "description": "Do they have a phone?",
+        "example": "e.g. {% if profile.has_phone? %}{% endif %}"
+      },
+      "has_work_phone?": {
+        "description": "Do they have a work phone?",
+        "example": "e.g. {% if profile.has_work_phone? %}{% endif %}"
+      },
+      "has_full_address?": {
+        "description": "Do we have their full address?",
+        "example": "e.g. {% if profile.has_full_address? %}"
+      },
+      "has_donated?": {
+        "description": "Have they donated?",
+        "example": "e.g. {% if profile.has_donated? %}"
+      },
+      "has_twitter_authorization?": {
+        "description": "Have they connected their Twitter account?",
+        "example": "e.g. {% if profile.has_twitter_authorization? %}"
+      },
+      "has_facebook_authorization?": {
+        "description": "Have they connected their Facebook account?",
+        "example": "e.g. {% if profile.has_facebook_authorization? %}"
+      },
+      "has_twitter_info?": {
+        "description": "Is their Twitter account attached to their record?",
+        "example": "e.g. {% if has_twitter_info? %}"
+      },
+      "has_facebook_info?": {
+        "description": "Is their Facebook account attached to their record?",
+        "example": "e.g. {% if profile.has_facebook_info? %}"
+      },
+      "has_name?": {
+        "description": "Do they have a name?",
+        "example": "e.g. {% if profile.has_name? %}"
+      },
+      "has_email?": {
+        "description": "Do they have an email address?",
+        "example": "e.g. {% if profile.has_email? %}"
+      },
+      "twitter_id": {
+        "description": "Twitter ID, like 20830288",
+        "example": "e.g. {{ profile.twitter_id }}"
+      },
+      "twitter_login": {
+        "description": "Twitter login, like @jgilliam",
+        "example": "e.g. {{ profile.twitter_login }}"
+      },
+      "twitter_profile_url": {
+        "description": "Twitter profile URL",
+        "example": "e.g. {{ profile.twitter_profile_url }}"
+      },
+      "facebook_profile_url": {
+        "description": "Facebook profile URL",
+        "example": "e.g. {{ profile.facebook_profile_url }}"
+      },
+      "facebook_profile_url_path": {
+        "description": "Facebook profile URL path /jgilliam",
+        "example": "e.g. {{ profile.facebook_profile_url_path }}"
+      },
+      "facebook_uid": {
+        "description": "Facebook UID",
+        "example": "e.g. {{ profile.facebook_uid }}"
+      },
+      "linkedin_profile_url": {
+        "description": "LinkedIn profile URL",
+        "example": "e.g. {{ profile.linkedin_profile_url }}"
+      },
+      "rule_violations_count": {
+        "description": "Number of rule violations",
+        "example": "e.g. {{ profile.rule_violations_count }}"
+      },
+      "is_banned?": {
+        "description": "Have they been banned?",
+        "example": "e.g. {{ profile.is_banned? }}"
+      },
+      "donations_amount_in_cents": {
+        "description": "How much they've donated in cents, so 2000 would be $20"
+      },
+      "donations_amount_format": {
+        "description": "How much they've donated, but formatted like $20.00"
+      },
+      "donations_raised_amount_in_cents": {
+        "description": "How much money they've raised"
+      },
+      "donations_raised_amount_format": {},
+      "donations_amount_average_format": {},
+      "donations_amount_this_cycle_in_cents": {
+        "description": "How much they've donated this cycle (only useful for political campaigns)"
+      },
+      "donations_amount_this_cycle_format": {},
+      "donations_raised_amount_this_cycle_in_cents": {
+        "description": "How much money they've raised this cycle (only useful for political campaigns)'"
+      },
+      "donations_raised_amount_this_cycle_format": {},
+      "donations_pledged_amount_in_cents": {
+        "description": "How much they've pledged"
+      },
+      "donations_pledged_amount_format": {},
+      "donations_to_raise_amount_in_cents": {
+        "description": "How much they are supposed to raise (goal set in control panel)"
+      },
+      "donations_to_raise_amount_format": {},
+      "donations": {
+        "description": "An array of Donation objects"
+      },
+      "last_donation": {
+        "description": "The most recent donation"
+      },
+      "donations_count": {
+        "description": "Total number of donations by this person"
+      },
+      "maximum_donation_possible_this_period": {
+        "description": "The maximum allowable amount for donations this period"
+      },
+      "maximum_donation_possible_this_cycle": {
+        "description": "The maximum allowable amount for donations this cycle"
+      },
+      "unfulfilled_pledges": {
+        "description": "An array of unfulfilled Pledges"
+      },
+      "last_contact": {
+        "description": "The last contact made with this profile"
+      },
+      "revenue_amount_in_cents": {
+        "description": "Total amount of revenue from closed invoices in cents"
+      },
+      "revenue_amount_format": {
+        "description": "Total amount of revenue from closed invoices in $xx.xx format"
+      },
+      "capital_amount_in_cents": {
+        "description": "pc balance amount without a decimal",
+        "example": "e.g {% if profile.capital_amount_in_cents > 1000 %}"
+      },
+      "capital_amount_format": {
+        "description": "pc balance of profile, formatted for display",
+        "example": "e.g {{ profile.capital_amount_format }}"
+      },
+      "spent_capital_amount_in_cents": {
+        "description": "How much pc they've spent"
+      },
+      "spent_capital_amount_format": {
+        "description": "Total pc spent by profile, formatted for display",
+        "example": "e.g {{ profile.spent_capital_amount_format }}"
+      },
+      "received_capital_amount_in_cents": {
+        "description": "Received pc amount without a decimal. Useful in if statements",
+        "example": "e.g {% if profile.received_capital_amount_in_cents > 1000 %}"
+      },
+      "received_capital_amount_format": {
+        "description": "Total pc earned by profile, formatted for display",
+        "example": "e.g 400pc"
+      },
+      "membership_level_id": {
+        "description": "Membership level ID",
+        "example": "e.g. 1"
+      },
+      "membership_level_name": {
+        "description": "Membership level name",
+        "example": "e.g. VIP Member"
+      },
+      "has_membership_level_badge": {
+        "description": "Does this membership level have a badge?",
+        "example": "e.g. true"
+      },
+      "membership_level_badge": {
+        "description": "Short badge text for the membership level",
+        "example": "e.g. VIP"
+      },
+      "membership_started_at": {
+        "description": "Date and time the membership started",
+        "example": "{{ request.current_user.membership_started_at | date: '%B %d, %Y ' }}"
+      },
+      "membership_expires_at": {
+        "description": "Date and time the membership will expire",
+        "example": "{{ request.current_user.membership_expires_at | date: '%B %d, %Y ' }}"
+      },
+      "is_member?": {},
+      "has_auto_renewing_membership?": {
+        "description": "Is this membership auto-renewing",
+        "example": "{{ request.current_user.has_auto_renewing_membership? }}"
+      },
+      "membership_next_bill_date": {
+        "description": "Date of next billing",
+        "example": "{{ request.current_user.membership_next_bill_date }}"
+      },
+      "is_donor?": {},
+      "is_customer?": {},
+      "is_intern?": {
+        "description": "Checks if the profile has control panel access."
+      },
+      "is_admin?": {
+        "description": "Checks if the profile is an admin."
+      },
+      "do_not_call?": {
+        "description": "True if the user has opted out of phone calls. False otherwise."
+      },
+      "do_not_contact?": {
+        "description": "True if the user has opted out of contact. False otherwise."
+      },
+      "has_assistant?": {
+        "description": "True if the user has an assistant. False otherwise."
+      },
+      "assistant": {
+        "description": "Returns the profile object for this profile's assistant, if it exists."
+      },
+      "relationships": {
+        "description": "An array of 100 relationships with other profiles",
+        "example": "e.g. {% for relationship in current_profile.relationships %}"
+      },
+      "followings_count": {
+        "description": "Number of people profile is following",
+        "example": "e.g. {{ profile.followings_count }}"
+      },
+      "followers_count": {
+        "description": "Number of followers",
+        "example": "e.g. {{ profile.followers_count }}"
+      },
+      "followers_supporters_count": {
+        "description": "Number of followers who are supporters",
+        "example": "e.g. {{ profile.followers_supporters_count }}"
+      },
+      "followers_volunteers_count": {
+        "description": "Number of followers who are volunteers/staffers/interns",
+        "example": "e.g. {{ profile.followers_volunteers_count }}"
+      },
+      "followers_donors_count": {
+        "description": "Number of followers who are donors",
+        "example": "e.g. {{ profile.followers_donors_count }}"
+      },
+      "followers_possible_voters_count": {
+        "description": "Number of followers who could vote",
+        "example": "e.g. {{ profile.followers_possible_voters_count }}"
+      },
+      "followers_possible_voters_with_unknown_count": {
+        "description": "Number of followers who could vote, or at least we don't know that they can't.",
+        "example": "e.g. {{ profile.followers_possible_voters_with_unknown_count }}"
+      },
+      "recruits_count": {
+        "description": "Number of people profile has recruited",
+        "example": "e.g. {{ profile.recruits_count }}"
+      },
+      "followings_from_facebook": {
+        "description": "An array of profile objects of their top 6 Facebook friends that are now following them"
+      },
+      "followings_count_from_facebook": {
+        "description": "Number of people following profile from Facebook (not the number of Facebook friends)",
+        "example": "e.g. {{ profile.followings_count_from_facebook }}"
+      },
+      "followings_from_twitter": {
+        "description": "An array of profile objects of 6 people they are following now as a result of following them on Twitter"
+      },
+      "followings_count_from_twitter": {
+        "description": "Number of people following profile from Twitter (not the number of Twitter followers)",
+        "example": "e.g. {{ profile.followings_count_from_twitter }}"
+      },
+      "followers_from_twitter": {
+        "description": "An array of profile objects of 6 people that are following this person as a result of following them on Twitter",
+        "example": "e.g."
+      },
+      "followers_count_from_twitter": {
+        "description": "Number of people profile is following from Twitter",
+        "example": "e.g. {{ profile.followers_count_from_twitter }}"
+      },
+      "following_ids": {
+        "description": "All following ids",
+        "example": "e.g {{ profile.following_ids }}"
+      },
+      "recruit_ids": {
+        "description": "All recruit ids",
+        "example": "e.g {{ profile.recruit_ids }}"
+      },
+      "following_page_ids": {
+        "description": "All the ids of pages they are following"
+      },
+      "volunteers_types": {
+        "description": "An array of volunteer_type objects, volunteer roles this person has signed up for"
+      },
+      "capitals": {
+        "description": "Paginated array of capital objects for their political capital balance sheet"
+      },
+      "followers": {
+        "description": "Paginated array of profile objects for everyone following this person."
+      },
+      "followings": {
+        "description": "Paginated array of profile objects for everyone followed by this person"
+      },
+      "recruits": {
+        "description": "Paginated array of profile objects for everyone this person has recruited"
+      },
+      "activities": {
+        "description": "Paginated array of activities objects for all this person's public activity, sorted by most recent"
+      },
+      "recruiting_activities": {
+        "description": "Paginated array of activitiesobjects for all the recruiting oriented activities of this person, sorted by most recent"
+      },
+      "profile_image": {
+        "description": "Profile image of profile (48px)",
+        "example": "e.g {{ profile.profile_image }}"
+      },
+      "bigger_profile_image": {
+        "description": "Bigger profile image of profile (72px)",
+        "example": "e.g {{ profile.bigger_profile_image }}"
+      },
+      "smaller_profile_image": {
+        "description": "Smaller profile image of profile (24px)",
+        "example": "e.g {{ profile.smaller_profile_image }}"
+      },
+      "profile_image_url": {
+        "description": "Just the URL of the profile image",
+        "example": "e.g <![CDATA[ <img src=\"{{ profile.profile_image_url }}\" width=\"48\" height=\"48\" /> ]]>"
+      },
+      "logout_url": {
+        "description": "URL to logout",
+        "example": "e.g {{ profile.logout_url }}"
+      },
+      "follow_url": {
+        "description": "URL to follow profile",
+        "example": "e.g {{ profile.follow_url }}"
+      },
+      "unfollow_url": {
+        "description": "URL to stop following profile",
+        "example": "e.g {{ profile.unfollow_url }}"
+      },
+      "profile_url": {
+        "description": "URL to profile's public profile",
+        "example": "e.g {{ profile.profile_url }}"
+      },
+      "full_profile_url": {
+        "description": "Full URL to profile's public profile",
+        "example": "e.g http://abeforprez.com/profiles/1-Jim-Gilliam"
+      },
+      "admin_url": {
+        "description": "URL to profile's admin page",
+        "example": "e.g {{ profile.admin_url }}"
+      },
+      "settings_url": {
+        "description": "URL to profile's settings page",
+        "example": "e.g {{ profile.settings_url }}"
+      },
+      "precinct_code": {
+        "description": "The numeric precinct code"
+      },
+      "precinct_name": {
+        "description": "The alphanumeric precinct name"
+      },
+      "contact_history": {
+        "description": "Returns an array of contact Activity objects"
+      },
+      "custom_values_for_display": {
+        "description": "Returns an array of custom field values associated with the profile",
+        "example": "e.g {{ profile.custom_values_for_display['custom_field_slug'] }}"
+      },
+      "turnout_probability_score": {
+        "description": "With the Voter addon enabled, returns the profile's turnout probability score",
+        "example": "e.g {{ profile.turnout_probability_score }}"
+      },
+      "support_probability_score": {
+        "description": "With the Voter addon enabled, returns the profile's support probability score",
+        "example": "e.g {{ profile.support_probability_score }}"
+      }
+    },
+    "description": "These variables can be used to display information on our Public Profiles. To display these variables, use the \"profile.\" prefix instead of the usual \"signup.\" prefix that would be used on signup variables and insert your code in either the \"profiles_show.html\" or \"profiles_show_wide.html\" (if your profiles do not have the sidebar enabled) templates. It is also to display custom people fields on public profiles."
+  },
+  "recurring_donation": {
+    "slug": "recurring_donation_variables",
+    "title": "Recurring donation variables",
+    "properties": {
+      "next_billing_date": {
+        "description": "Time of next donation",
+        "example": "e.g. {{ recurring_donation.next_billing_date | date_to_string }}"
+      },
+      "amount_format": {
+        "description": "Donation amount as text with currency",
+        "example": "e.g. $10.00"
+      },
+      "supporter_portal_url": {
+        "description": "URL of site where series was initiated with supporter portal path",
+        "example": "e.g. https://abeforprez.com/supporter_portal"
+      },
+      "site": {
+        "description": "Website where series was initiated",
+        "example": "e.g. {{ recurring_donation.site.slug }}"
+      },
+      "recurrence": {
+        "description": "Frequency of the donation",
+        "example": "e.g. monthly/annual"
+      },
+      "status": {
+        "description": "Status of the donation",
+        "example": "e.g. active, failing, failed, canceled"
+      },
+      "started_at": {
+        "description": "Time the series was initiated",
+        "example": "e.g. {{ recurring_donation.started_at | date_to_string }}"
+      },
+      "ended_at": {
+        "description": "Time the series was canceled",
+        "example": "e.g. {{ recurring_donation.ended_at | date_to_string }}"
+      },
+      "membership_type_name": {
+        "description": "Name of the associated membership",
+        "example": "e.g. {{ recurring_donation.membership_type_name }}"
+      },
+      "nb_payments?": {
+        "description": "Checks if donation processed through NationBuilder Payments",
+        "example": "e.g. recurring_donation.nb_payments?"
+      },
+      "amount_unformatted": {
+        "description": "Donation amount as text without currency",
+        "example": "e.g. 1000.00"
+      },
+      "portal_detail_view_url": {
+        "description": "Direct link to view recurring donation details in supporter portal"
+      },
+      "portal_payment_update_url": {
+        "description": "Direct link to update payment method for recurring donation in supporter portal"
+      },
+      "page": {
+        "description": "Donation page where series was initiated",
+        "example": "e.g. {{ recurring_donation.page.slug }}"
+      }
+    }
+  },
+  "request": {
+    "slug": "request_variables",
+    "title": "Request variables",
+    "properties": {
+      "current_user": {
+        "description": "User viewing page (if logged in)",
+        "example": "e.g. {{ request.current_user.first_name }}",
+        "type": "signup"
+      },
+      "current_signup": {
+        "description": "Signup viewing the page (if sorta logged in)",
+        "example": "e.g. @{{ request.current_signup.parent.twitter_login }}",
+        "type": "signup"
+      },
+      "current_browser": {
+        "description": "This helps determine whether they are in site view, mobile view, or tablet view",
+        "type": "signup"
+      },
+      "current_theme": {
+        "description": "Site theme currently enabled",
+        "example": "e.g. {{ request.current_theme }}"
+      },
+      "current_order": {
+        "description": "Order to display items",
+        "example": "e.g. {{ request.current_order.form_amount_options }}"
+      },
+      "from_search_engine": {
+        "description": "Search engine they came from",
+        "example": "e.g. google or yahoo"
+      },
+      "from_search_engine_query": {
+        "description": "Search engine query they typed",
+        "example": "e.g. immigration refrom"
+      },
+      "is_spider?": {
+        "description": "Is this a search engine spider? (Google, Yahoo, etc)",
+        "example": "e.g. {% if request.is_spider? %}"
+      },
+      "is_mobile?": {
+        "description": "Is this a mobile device?",
+        "example": "e.g. {% if request.is_mobile? %}"
+      },
+      "is_ie6?": {
+        "description": "Checks if the browser is Internet Explorer 6",
+        "example": "e.g. {% if request.is_ie6? %}"
+      },
+      "session_id": {
+        "description": "Cookie based session id",
+        "example": "e.g. {{ request.session_id }}"
+      },
+      "logged_in?": {
+        "description": "Checks the user is fully logged in",
+        "example": "e.g. The user either has a password, or are authenticated via Facebook Connect or Twitter."
+      },
+      "sorta_logged_in?": {
+        "description": "Checks the user is sorta logged in",
+        "example": "e.g. The user didn't login with a password nor is authenticated via Facebook or Twitter, but they clicked through an email or filled out a form during the session, so we believe we know who it is."
+      },
+      "facebook_logged_in?": {
+        "description": "Checks the user is logged in via Facebook",
+        "example": "e.g. The user is logged in via Facebook Connect"
+      },
+      "is_splash?": {
+        "description": "Are we in splash page mode?",
+        "example": "e.g. {% if request.is_splash? %}"
+      },
+      "template": {
+        "description": "The template file name being viewed",
+        "example": "e.g. {{ request.template }}"
+      },
+      "url_path": {
+        "description": "The URL path of the page being viewed",
+        "example": "e.g. /pages/nyc"
+      },
+      "is_intern?": {
+        "description": "Checks if the person viewing the page is intern level or above",
+        "example": "e.g. {% if request.is_intern? %}"
+      },
+      "is_leader?": {
+        "description": "Checks if the person viewing the page is a team leader or above",
+        "example": "e.g. {% if request.is_leader? %}"
+      },
+      "is_staff?": {
+        "description": "Checks if the person viewing the page is staff",
+        "example": "e.g. {% if request.is_staff? %}"
+      },
+      "is_admin?": {
+        "description": "Checks if the person viewing the page is an admin",
+        "example": "e.g. {% if request.is_admin? %}"
+      },
+      "is_ajax?": {
+        "description": "Checks if ajax is enabled or not",
+        "example": "e.g. {% if request.is_ajax? == false %}"
+      },
+      "is_facebook_canvas?": {
+        "description": "Is the person accessing this from within the Facebook canvas?",
+        "example": "e.g. {% if request.is_facebook_canvas? == true %}"
+      },
+      "is_facebook_page_canvas?": {
+        "description": "Is the person accessing this from within an actual Facebook page?",
+        "example": "e.g. {% if request.is_facebook_page_canvas? == true %}"
+      },
+      "new_user_session_url": {
+        "description": "?",
+        "example": "e.g."
+      },
+      "new_account_url": {
+        "description": "URL to create a new account",
+        "example": "e.g. <![CDATA[ <a href=\"{{ request.new_account_url }}\">Create an account</a> ]]>"
+      },
+      "new_password_reset_url": {
+        "description": "URL to reset password",
+        "example": "e.g. <![CDATA[ <a href=\"{{ request.new_password_reset_url }}\">Reset your password</a> ]]>"
+      },
+      "facebook_connect_url": {
+        "description": "Facebook Connect URL",
+        "example": "e.g. <![CDATA[ <a href=\"{{ request.facebook_connect_url }}\"><img src=\"/images/signin_with_facebook.png\"></a> ]]>"
+      }
+    },
+    "description": ".table > tbody > tr > th { border-top:none; border-bottom:2px solid #DDD; }"
+  },
+  "rule": {
+    "slug": "rule_variables",
+    "title": "Rule variables",
+    "properties": {
+      "position": {
+        "description": "Rule #",
+        "example": "e.g. {{ rule.position }}"
+      },
+      "name": {
+        "description": "Name of rule",
+        "example": "e.g. {{ rule.name }}"
+      },
+      "content": {
+        "description": "Details of rule",
+        "example": "e.g. {{ rule.content }}"
+      },
+      "content_text": {
+        "description": "Details of rule in text",
+        "example": "e.g. {{ rule.content_text }}"
+      },
+      "content_mailing": {
+        "description": "Details of rule, formatted for mailings",
+        "example": "e.g. {{ rule.content_mailing }}"
+      }
+    }
+  },
+  "rule_violation": {
+    "slug": "rule_violation_variables",
+    "title": "Rule violation variables",
+    "properties": {
+      "author": {
+        "description": "Person issuing the violation/warning",
+        "example": "e.g. {{ rule_violation.author.published_name }}"
+      },
+      "signup": {
+        "description": "Person receiving the violation/warning",
+        "example": "e.g. {{ rule_violation.signup.published_name }}"
+      },
+      "comment": {
+        "description": "Comment where the violation occurred",
+        "example": "e.g. {{ rule_violation.comment.content }}"
+      },
+      "comment_id": {
+        "description": "Comment id",
+        "example": "e.g. {{ rule_violation.comment_id }}"
+      },
+      "page": {
+        "description": "Page where violation occurred",
+        "example": "e.g. {{ rule_violation.page.name }}"
+      },
+      "page_id": {
+        "description": "Page id",
+        "example": "e.g. {{ rule_violation.page_id }}"
+      },
+      "rule": {
+        "description": "Rule broken",
+        "example": "e.g. {{ rule_violation.rule.name }}"
+      },
+      "number": {
+        "description": "What number violation was this for the signup?",
+        "example": "e.g. {{ rule_violation.number }}"
+      }
+    }
+  },
+  "settings": {
+    "slug": "settings_variables",
+    "title": "Settings variables",
+    "properties": {
+      "official_name": {
+        "description": "Official name for the organization",
+        "example": "e.g. {{ settings.official_name }}"
+      },
+      "organization_type": {
+        "description": "Type of organization",
+        "example": "e.g. for_profit, nonprofit, federal_candidate, etc"
+      },
+      "has_address?": {
+        "description": "Organization has an address",
+        "example": "e.g. for_profit, nonprofit, federal_candidate, etc"
+      },
+      "address": {
+        "description": "Address object",
+        "example": "e.g. {{ settings.address.one_line }}",
+        "type": "address"
+      },
+      "is_us?": {
+        "description": "Is this a US based organization?",
+        "example": "e.g. {% if settings.is_us? %}{% endif %}"
+      },
+      "is_us_or_canada?": {
+        "description": "Is the primary location of this nation in the US or Canada?",
+        "example": "e.g. {% if settings.is_us_or_canada? %}}{% endif %}"
+      },
+      "has_states?": {
+        "description": "Does the country where this nation is based have states?",
+        "example": "e.g. {% if settings.has_states? %}{% endif %}"
+      },
+      "membership_types": {
+        "description": "Array of the site's membership types",
+        "example": "{% for type in settings.membership_types %} … {% endfor %}"
+      },
+      "has_advanced_privacy?": {
+        "description": "Checks if the nation has advanced privacy settings enabled",
+        "example": "e.g. {% if settings.has_advanced_privacy? %}"
+      },
+      "allow_account_creation?": {
+        "description": "Checks if the nation allows website visitors to create new accounts (controlled by the nation setting under Login and security)",
+        "example": "e.g. {% if settings.allow_account_creation? %}"
+      },
+      "stats_updated_at": {
+        "description": "Date/time of when these stats were last updated"
+      },
+      "people_count": {
+        "description": "Total number of people in your nation, including supporters, non-supporters, and prospects"
+      },
+      "supporters_count": {
+        "description": "Total number of supporters in your nation"
+      },
+      "volunteers_count": {
+        "description": "Total number of volunteers"
+      },
+      "donors_count": {
+        "description": "Total number of donors"
+      },
+      "fundraisers_count": {
+        "description": "Total number of fundraisers"
+      },
+      "recruiters_count": {
+        "description": "Total number of recruiters"
+      },
+      "voters_count": {
+        "description": "Total number of voters"
+      },
+      "customers_count": {
+        "description": "Total number of customers"
+      },
+      "members_count": {
+        "description": "Total number of members"
+      },
+      "donations_amount_format": {
+        "description": "Total amount of donations"
+      },
+      "donations_amount_to_raise_format": {
+        "description": "Total of everyone's fundraising goals"
+      },
+      "donations_left_to_raise_amount_format": {
+        "description": "Amount left to raise"
+      },
+      "capital_format": {
+        "description": "Total amount of pc for the entire nation.",
+        "example": "1120pc"
+      },
+      "capital_earned_format": {
+        "description": "Total amount of pc earned by the entire nation.",
+        "example": "1200pc"
+      },
+      "capital_spent_format": {
+        "description": "Total amount of pc spent by the entire nation.",
+        "example": "80pc"
+      },
+      "election": {
+        "description": "The upcoming election settings",
+        "example": "e.g. {{ settings.election }}",
+        "type": "election"
+      },
+      "candidate_name": {
+        "example": "e.g. {{ settings.candidate_name }}"
+      },
+      "candidate_first_name": {
+        "example": "e.g. {{ settings.candidate_first_name }}"
+      },
+      "candidate_last_name": {
+        "example": "e.g. {{ settings.candidate_last_name }}"
+      },
+      "party": {
+        "description": "Political party (single letter)",
+        "example": "e.g. D, R, I"
+      },
+      "parties": {
+        "description": "All political parties, both single letter code and full name.",
+        "example": "{% for party in parties %} {{party.code}} {% endfor %} (This will output all the party single letter codes)"
+      },
+      "office_name": {
+        "description": "Name of the office sought",
+        "example": "e.g. Senator or Mayor"
+      },
+      "state": {
+        "description": "State running in",
+        "example": "e.g. CA"
+      },
+      "district": {
+        "description": "District, if applicable",
+        "example": "e.g. 14"
+      },
+      "city": {
+        "description": "City running in",
+        "example": "e.g. San Diego"
+      },
+      "county": {
+        "description": "County running in",
+        "example": "e.g. Humboldt"
+      },
+      "country": {
+        "description": "Country running in",
+        "example": "e.g. United Kingdom"
+      }
+    }
+  },
+  "signup": {
+    "slug": "signup_variables",
+    "title": "Signup variables",
+    "properties": {
+      "id": {
+        "description": "Signup's NationBuilder ID",
+        "example": "e.g. 27382"
+      },
+      "username": {
+        "description": "User name",
+        "example": "e.g. rbuckyfuller"
+      },
+      "first_name": {
+        "description": "First name of signup",
+        "example": "e.g. Richard"
+      },
+      "middle_name": {
+        "description": "Middle name of signup",
+        "example": "e.g. Buckminster"
+      },
+      "last_name": {
+        "description": "Last name of signup",
+        "example": "e.g. Fuller"
+      },
+      "first_name_or_friend": {
+        "description": "First name, or \"Friend\" if we don't have one",
+        "example": "e.g. Abe"
+      },
+      "full_name_or_friend": {
+        "description": "Full name or \"Friend\" if we don't have one",
+        "example": "e.g. Abe Lincoln"
+      },
+      "published_name": {
+        "description": "Published full name of signup",
+        "example": "e.g. {{ signup.published_name }}"
+      },
+      "published_first_name": {
+        "description": "Published first name of signup",
+        "example": "e.g. {{ signup.published_first_name }}"
+      },
+      "published_last_name": {
+        "description": "Published last name of signup",
+        "example": "e.g. {{ signup.published_last_name }}"
+      },
+      "published_name_linked": {
+        "description": "Published full name, linked to profile",
+        "example": "e.g. {{ signup.published_name_linked }}"
+      },
+      "published_first_name_linked": {
+        "description": "Published first name, linked to profile",
+        "example": "e.g. {{ signup.published_first_name_linked }}"
+      },
+      "signup_type": {
+        "description": "Signup type: 0 is person, 1 is organization",
+        "example": "e.g. {% if signup.signup_type == 1 %}"
+      },
+      "is_person?": {
+        "description": "Checks if the signup is a person",
+        "example": "e.g. {% if signup.is_person? %}"
+      },
+      "is_organization?": {
+        "description": "Checks if the signup is an organization",
+        "example": "e.g. {% if signup.is_organization? %}"
+      },
+      "name_or_email": {
+        "description": "Name or email of signups",
+        "example": "e.g. {{ signup.name_or_email }}"
+      },
+      "email": {
+        "description": "Email of signup",
+        "example": "e.g. [email protected]"
+      },
+      "emails_to_sentence": {
+        "description": "The signups emails as a sentence",
+        "example": "e.g. [email protected] and [email protected]"
+      },
+      "login_email": {
+        "description": "Login email of signup if a user account exists (otherwise nil)",
+        "example": "e.g. [email protected]"
+      },
+      "description": {
+        "description": "The signup's background text",
+        "example": "e.g. Stephen is a web developer living in Los Angeles"
+      },
+      "date of birth": {
+        "description": "The signup's date of birth",
+        "example": "e.g. {{ signup.born_at_chronic }}"
+      },
+      "age": {
+        "description": "The signup's age in years",
+        "example": "e.g. {{ signup.age}}"
+      },
+      "sex": {
+        "description": "The signup's sex",
+        "example": "e.g. M"
+      },
+      "party": {
+        "description": "The signup's political party",
+        "example": "e.g. D"
+      },
+      "previous_party": {
+        "description": "The signup's previous political party",
+        "example": "e.g. D"
+      },
+      "demo_name": {
+        "description": "The person's race",
+        "example": "e.g. Martian"
+      },
+      "tags": {
+        "description": "Array of tags for this person",
+        "example": "{% if request.sorta_logged_in? and request.current_signup.tags contains \"fun\" %}They have the \"fun\" tag{% endif %}"
+      },
+      "tag_list": {
+        "description": "Comma separated string of tags for this person"
+      },
+      "tag_list_sentence": {
+        "description": "This person's tags as a sentence",
+        "example": "rain, cats, dogs, and umbrellas"
+      },
+      "submitted_address": {
+        "description": "Address as submitted by them (not normalized at all)",
+        "example": "e.g. 555 figueroa st, los angeles"
+      },
+      "address": {
+        "description": "Primary address of signup",
+        "example": "e.g. {{ signup.address.one_line }}",
+        "type": "address"
+      },
+      "home_address": {
+        "description": "Home address of signup",
+        "example": "e.g. {{ signup.home_address.one_line }}",
+        "type": "address"
+      },
+      "mailing_address": {
+        "description": "Street address of signup",
+        "example": "e.g. {{ signup.mailing_address.one_line }}",
+        "type": "address"
+      },
+      "registered_address": {
+        "description": "Address they are registered to vote at (from Political Force)",
+        "example": "e.g. {{ signup.registered_address.one_line }}",
+        "type": "address"
+      },
+      "work_address": {
+        "description": "Work address",
+        "example": "e.g. {{ signup.work_address.one_line }}",
+        "type": "address"
+      },
+      "phone_number": {
+        "description": "Phone number of signup",
+        "example": "e.g. {{ signup.phone_number }}"
+      },
+      "work_phone_number": {
+        "description": "Work phone number of signup",
+        "example": "e.g. {{ signup.work_phone_number }}"
+      },
+      "mobile_number": {
+        "description": "Mobile number of signup",
+        "example": "e.g. {{ signup.mobile_number }}"
+      },
+      "created_at": {
+        "description": "When the signup was created",
+        "example": "e.g. {{ signup.created_at | time_ago }}"
+      },
+      "updated_at": {
+        "description": "When the signup was last updated",
+        "example": "e.g. {{ signup.updated_at | time_ago }}"
+      },
+      "external_id": {
+        "description": "Signup's external ID"
+      },
+      "is_opted_in?": {
+        "description": "Checks if signup is opted in",
+        "example": "e.g. {% if signup.is_opted_in? %}"
+      },
+      "is_supporter?": {
+        "description": "Checks if signup is",
+        "example": "e.g. {% if signup.is_opted_in? %}"
+      },
+      "support_level": {
+        "description": "Signup support level, 1-5",
+        "example": "e.g. {{ signup.support_level}}"
+      },
+      "support_level_pretty": {
+        "description": "Signup support level wrapped in green/red background",
+        "example": "e.g. {{ signup.support_level_pretty | on_off_button_small }}"
+      },
+      "is_volunteer?": {
+        "description": "Checks if the signup is a volunteer",
+        "example": "e.g. {% if signup.is_volunteer? %}"
+      },
+      "is_volunteer_pretty": {
+        "description": "Volunteer status (includes staff/interns/etc) wrapped in green/red background",
+        "example": "e.g. {{ signup.is_volunteer_pretty | on_off_button_small }}"
+      },
+      "is_profile_searchable?": {
+        "description": "Checks if profile is discoverable by search engines",
+        "example": "e.g. {% if signup.is_profile_searchable? %}"
+      },
+      "is_profile_published?": {
+        "description": "Checks if profile is published on the site",
+        "example": "e.g. {% if signup.is_profile_published? %}"
+      },
+      "is_survey_question_private?": {
+        "description": "Checks if survey question answers is set to private",
+        "example": "e.g. {% if signup.is_survey_question_private? %}"
+      },
+      "is_leaderboardable?": {
+        "description": "Checks if they are included in leaderboards",
+        "example": "e.g. {% if signup.is_profile_private? %}"
+      },
+      "employer": {
+        "example": "e.g. {{ signup.employer }}"
+      },
+      "occupation": {
+        "example": "e.g. {{ signup.occupation }}"
+      },
+      "website": {
+        "example": "e.g. {{ signup.website }}"
+      },
+      "bio": {
+        "description": "Bio, usually this is coming from Twitter",
+        "example": "e.g. {{ signup.bio }}"
+      },
+      "parent": {
+        "description": "Array of the signup's Point Person's signup variables",
+        "example": "e.g. {{ signup.parent.first_name }}"
+      },
+      "recruiter": {
+        "description": "Array of the signup's Recruiter's signup variables",
+        "example": "e.g. {{ signup.recruiter.first_name }}"
+      },
+      "has_website?": {
+        "description": "Checks if signup has a website",
+        "example": "e.g. {% if signup.has_website? %}"
+      },
+      "has_bio?": {
+        "description": "Checks if signup has a biography",
+        "example": "e.g. {% if signup.has_bio? %}"
+      },
+      "has_parent?": {
+        "description": "Do they have a point person?"
+      },
+      "has_a_login?": {
+        "description": "Do they have a login?",
+        "example": "e.g. {% if signup.has_a_login? %}{% endif %}"
+      },
+      "has_password?": {
+        "description": "Do they have a password? (Legacy, use has_a_login instead)",
+        "example": "e.g. {% if signup.has_password? %}{% endif %}"
+      },
+      "has_mobile?": {
+        "description": "Do they have a cell phone?",
+        "example": "e.g. {% if signup.has_mobile? %}{% endif %}"
+      },
+      "has_phone?": {
+        "description": "Do they have a phone?",
+        "example": "e.g. {% if signup.has_phone? %}{% endif %}"
+      },
+      "has_work_phone?": {
+        "description": "Do they have a work phone?",
+        "example": "e.g. {% if signup.has_work_phone? %}{% endif %}"
+      },
+      "has_full_address?": {
+        "description": "Do we have their full address?",
+        "example": "e.g. {% if signup.has_full_address? %}"
+      },
+      "has_donated?": {
+        "description": "Have they donated?",
+        "example": "e.g. {% if signup.has_donated? %}"
+      },
+      "has_facebook_authorization?": {
+        "description": "Have they connected their Facebook account?",
+        "example": "e.g. {% if signup.has_facebook_authorization? %}"
+      },
+      "has_twitter_info?": {
+        "description": "Is their Twitter account attached to their record?",
+        "example": "e.g. {% if has_twitter_info? %}"
+      },
+      "has_facebook_info?": {
+        "description": "Is their Facebook account attached to their record?",
+        "example": "e.g. {% if signup.has_facebook_info? %}"
+      },
+      "has_name?": {
+        "description": "Do they have a name?",
+        "example": "e.g. {% if signup.has_name? %}"
+      },
+      "has_email?": {
+        "description": "Do they have an email address?",
+        "example": "e.g. {% if signup.has_email? %}"
+      },
+      "twitter_login": {
+        "description": "Twitter login, like @jgilliam",
+        "example": "e.g. {{ signup.twitter_login }}"
+      },
+      "twitter_profile_url": {
+        "description": "Twitter profile URL",
+        "example": "e.g. {{ signup.twitter_profile_url }}"
+      },
+      "facebook_profile_url": {
+        "description": "Facebook profile URL",
+        "example": "e.g. {{ signup.facebook_profile_url }}"
+      },
+      "facebook_profile_url_path": {
+        "description": "Facebook profile URL path /jgilliam",
+        "example": "e.g. {{ signup.facebook_profile_url_path }}"
+      },
+      "facebook_uid": {
+        "description": "Facebook UID",
+        "example": "e.g. {{ signup.facebook_uid }}"
+      },
+      "linkedin_profile_url": {
+        "description": "LinkedIn profile URL",
+        "example": "e.g. {{ signup.linkedin_profile_url }}"
+      },
+      "rule_violations_count": {
+        "description": "Number of rule violations",
+        "example": "e.g. {{ signup.rule_violations_count }}"
+      },
+      "is_banned?": {
+        "description": "Have they been banned?",
+        "example": "e.g. {{ signup.is_banned? }}"
+      },
+      "donations_amount_in_cents": {
+        "description": "How much they've donated in cents, so 2000 would be $20"
+      },
+      "donations_amount_format": {
+        "description": "How much they've donated, but formatted like $20.00"
+      },
+      "donations_raised_amount_in_cents": {
+        "description": "How much money they've raised"
+      },
+      "donations_raised_amount_format": {},
+      "donations_amount_average_format": {},
+      "donations_amount_this_cycle_in_cents": {
+        "description": "How much they've donated this cycle (only useful for political campaigns)"
+      },
+      "donations_amount_this_cycle_format": {},
+      "donations_raised_amount_this_cycle_in_cents": {
+        "description": "How much money they've raised this cycle (only useful for political campaigns)'"
+      },
+      "donations_raised_amount_this_cycle_format": {},
+      "donations_pledged_amount_in_cents": {
+        "description": "How much they've pledged"
+      },
+      "donations_pledged_amount_format": {},
+      "donations_to_raise_amount_in_cents": {
+        "description": "How much they are supposed to raise (goal set in control panel)"
+      },
+      "donations_to_raise_amount_format": {},
+      "donations": {
+        "description": "An array of Donation objects"
+      },
+      "last_donation": {
+        "description": "The most recent donation"
+      },
+      "donations_count": {
+        "description": "Total number of donations by this person"
+      },
+      "maximum_donation_possible_this_period": {
+        "description": "The maximum allowable amount for donations this period"
+      },
+      "maximum_donation_possible_this_cycle": {
+        "description": "The maximum allowable amount for donations this cycle"
+      },
+      "unfulfilled_pledges": {
+        "description": "An array of unfulfilled Pledges"
+      },
+      "last_contact": {
+        "description": "The last contact made with this signup"
+      },
+      "revenue_amount_in_cents": {
+        "description": "Total amount of revenue from closed invoices"
+      },
+      "revenue_amount_format": {},
+      "capital_amount_in_cents": {
+        "description": "pc balance amount without a decimal",
+        "example": "e.g {% if signup.capital_amount_in_cents > 1000 %}"
+      },
+      "capital_amount_format": {
+        "description": "pc balance of signup, formatted for display",
+        "example": "e.g {{ signup.capital_amount_format }}"
+      },
+      "spent_capital_amount_in_cents": {
+        "description": "How much pc they've spent"
+      },
+      "spent_capital_amount_format": {
+        "description": "Total pc spent by signup, formatted for display",
+        "example": "e.g {{ signup.spent_capital_amount_format }}"
+      },
+      "received_capital_amount_in_cents": {
+        "description": "Received pc amount without a decimal. Useful in if statements",
+        "example": "e.g {% if signup.received_capital_amount_in_cents > 1000 %}"
+      },
+      "received_capital_amount_format": {
+        "description": "Total pc earned by signup, formatted for display",
+        "example": "e.g 400pc"
+      },
+      "event_rsvps": {
+        "description": "Array of Event RSVP objects"
+      },
+      "memberships": {
+        "description": "An array of a signup's memberships",
+        "example": "e.g. {% for membership in current_signup.memberships %}"
+      },
+      "is_donor?": {},
+      "is_customer?": {},
+      "is_intern?": {
+        "description": "Checks if the signup has control panel access."
+      },
+      "is_leader?": {
+        "description": "No longer used",
+        "deprecated": true
+      },
+      "is_staff?": {
+        "description": "No longer used",
+        "deprecated": true
+      },
+      "is_admin?": {
+        "description": "Checks if the signup is an admin."
+      },
+      "do_not_call?": {
+        "description": "True if the user has opted out of phone calls. False otherwise."
+      },
+      "do_not_contact?": {
+        "description": "True if the user has opted out of contact. False otherwise."
+      },
+      "has_assistant?": {
+        "description": "True if the user has an assistant. False otherwise."
+      },
+      "assistant": {
+        "description": "Returns the Signup object for this Signup's assistant, if it exists."
+      },
+      "relationships": {
+        "description": "An array of 100 relationships with other signups (only supporters)",
+        "example": "e.g. {% for relationship in current_signup.relationships %}"
+      },
+      "all_relationships": {
+        "description": "An array of 100 relationships with other signups (both prospects AND supporters)",
+        "example": "e.g. {% for relationship in current_signup.all_relationships %}"
+      },
+      "followings_count": {
+        "description": "Number of people signup is following",
+        "example": "e.g. {{ signup.followings_count }}"
+      },
+      "followers_count": {
+        "description": "Number of followers",
+        "example": "e.g. {{ signup.followers_count }}"
+      },
+      "followers_supporters_count": {
+        "description": "Number of followers who are supporters",
+        "example": "e.g. {{ signup.followers_supporters_count }}"
+      },
+      "followers_volunteers_count": {
+        "description": "Number of followers who are volunteers/staffers/interns",
+        "example": "e.g. {{ signup.followers_volunteers_count }}"
+      },
+      "followers_donors_count": {
+        "description": "Number of followers who are donors",
+        "example": "e.g. {{ signup.followers_donors_count }}"
+      },
+      "followers_possible_voters_count": {
+        "description": "Number of followers who could vote",
+        "example": "e.g. {{ signup.followers_possible_voters_count }}"
+      },
+      "followers_possible_voters_with_unknown_count": {
+        "description": "Number of followers who could vote, or at least we don't know that they can't.",
+        "example": "e.g. {{ signup.followers_possible_voters_with_unknown_count }}"
+      },
+      "recruits_count": {
+        "description": "Number of people signup has recruited",
+        "example": "e.g. {{ signup.recruits_count }}"
+      },
+      "followings_from_facebook": {
+        "description": "An array of signup objects of their top 6 Facebook friends that are now following them"
+      },
+      "followings_count_from_facebook": {
+        "description": "Number of people following signup from Facebook (not the number of Facebook friends)",
+        "example": "e.g. {{ signup.followings_count_from_facebook }}"
+      },
+      "following_ids": {
+        "description": "All following ids",
+        "example": "e.g {{ signup.following_ids }}"
+      },
+      "recruit_ids": {
+        "description": "All recruit ids",
+        "example": "e.g {{ signup.recruit_ids }}"
+      },
+      "following_page_ids": {
+        "description": "All the ids of pages they are following"
+      },
+      "volunteers_types": {
+        "description": "An array of volunteer_type objects, volunteer roles this person has signed up for"
+      },
+      "capitals": {
+        "description": "Paginated array of capital objects for their political capital balance sheet"
+      },
+      "followers": {
+        "description": "Paginated array of signup objects for everyone following this person."
+      },
+      "followings": {
+        "description": "Paginated array of signup objects for everyone followed by this person"
+      },
+      "recruits": {
+        "description": "Paginated array of signup objects for everyone this person has recruited"
+      },
+      "activities": {
+        "description": "Paginated array of activities objects for all this person's public activity, sorted by most recent"
+      },
+      "recruiting_activities": {
+        "description": "Paginated array of activitiesobjects for all the recruiting oriented activities of this person, sorted by most recent"
+      },
+      "recruiting_activities_incl_private": {
+        "description": "Displays recruiting activities, including ones that have been made private, only to the logged in or sorta logged signup. Nothing will be returned otherwise."
+      },
+      "profile_image": {
+        "description": "Profile image of signup (48px)",
+        "example": "e.g {{ signup.profile_image }}"
+      },
+      "bigger_profile_image": {
+        "description": "Bigger profile image of signup (72px)",
+        "example": "e.g {{ signup.bigger_profile_image }}"
+      },
+      "smaller_profile_image": {
+        "description": "Smaller profile image of signup (24px)",
+        "example": "e.g {{ signup.smaller_profile_image }}"
+      },
+      "profile_image_url": {
+        "description": "Just the URL of the profile image",
+        "example": "e.g <![CDATA[ <img src=\"{{ signup.profile_image_url }}\" width=\"48\" height=\"48\" /> ]]>"
+      },
+      "logout_url": {
+        "description": "URL to logout",
+        "example": "e.g {{ signup.logout_url }}"
+      },
+      "follow_url": {
+        "description": "URL to follow signup",
+        "example": "e.g {{ signup.follow_url }}"
+      },
+      "unfollow_url": {
+        "description": "URL to stop following signup",
+        "example": "e.g {{ signup.unfollow_url }}"
+      },
+      "profile_url": {
+        "description": "URL to signup's public profile",
+        "example": "e.g {{ signup.profile_url }}"
+      },
+      "full_profile_url": {
+        "description": "Full URL to signup's public profile",
+        "example": "e.g http://abeforprez.com/profiles/1-Jim-Gilliam"
+      },
+      "admin_url": {
+        "description": "URL to signup's admin page",
+        "example": "e.g {{ signup.admin_url }}"
+      },
+      "settings_url": {
+        "description": "URL to signup's settings page",
+        "example": "e.g {{ signup.settings_url }}"
+      },
+      "precinct_code": {
+        "description": "The numeric precinct code"
+      },
+      "precinct_name": {
+        "description": "The alphanumeric precinct name"
+      },
+      "supranational_district": {
+        "description": "Supranational District"
+      },
+      "federal_district": {
+        "description": "Federal District"
+      },
+      "state_upper_district": {
+        "description": "State Upper District"
+      },
+      "state_lower_district": {
+        "description": "State Lower District"
+      },
+      "county_district": {
+        "description": "County District"
+      },
+      "city_district": {
+        "description": "City District"
+      },
+      "city_sub_district": {
+        "description": "City Subdistrict"
+      },
+      "village_district": {
+        "description": "Village/Neighborhood District"
+      },
+      "school_district": {
+        "description": "School District"
+      },
+      "school_sub_district": {
+        "description": "School Subdistrict"
+      },
+      "contact_history": {
+        "description": "Returns an array of contact Activity objects"
+      },
+      "custom_values_for_display": {
+        "description": "Returns an array of custom field values associated with the signup",
+        "example": "e.g {{ signup.custom_values_for_display['custom_field_slug'] }}"
+      },
+      "turnout_probability_score": {
+        "description": "With the Voter addon enabled, returns the signup's turnout probability score",
+        "example": "e.g {{ signup.turnout_probability_score }}"
+      },
+      "support_probability_score": {
+        "description": "With the Voter addon enabled, returns the signup's support probability score",
+        "example": "e.g {{ signup.support_probability_score }}"
+      },
+      "digital_will": {
+        "description": "With advanced privacy enabled, allows you to collect a person's digital will",
+        "example": "e.g {% text_area \"digital_will.content\", class:\"textarea\" %}"
+      }
+    }
+  },
+  "site": {
+    "slug": "site_variables",
+    "title": "Site variables",
+    "properties": {
+      "slug": {
+        "description": "http://[slug].yourdomain.com/",
+        "example": "e.g. www"
+      },
+      "name": {
+        "description": "Name of your site",
+        "example": "e.g. Abe Lincoln for President"
+      },
+      "long_name": {
+        "description": "Longer name"
+      },
+      "candidate_name_or_site_name": {
+        "description": "Candidate's name, or the site name if no candidate",
+        "example": "e.g. Abe Lincoln"
+      },
+      "candidate_first_name_or_site_name": {
+        "description": "Candidate's first name, or the site name if no candidate",
+        "example": "e.g. Abe"
+      },
+      "title": {
+        "description": "Default page title, important for search engines",
+        "example": "e.g. Abe Lincoln for President 2012"
+      },
+      "headline": {
+        "description": "Site headline",
+        "example": "e.g. Abe Lincoln"
+      },
+      "subheadline": {
+        "description": "Site subheadline",
+        "example": "e.g. for President"
+      },
+      "url": {
+        "description": "URL of homepage without the http",
+        "example": "e.g. abeforprez.com"
+      },
+      "full_url": {
+        "description": "URL of homepage",
+        "example": "e.g. https://abeforprez.com/"
+      },
+      "mobile_menu_url": {
+        "description": "URL of mobile menu",
+        "example": "e.g. /mobile_menu"
+      },
+      "language": {
+        "description": "Default site language which can be configured in the site settings",
+        "example": "e.g. {{ site.language }}"
+      },
+      "page_tags": {
+        "description": "Page tags used on the site",
+        "example": "e.g. {% if site.page_tags contains \"saturday\" %}"
+      },
+      "ask_for_volunteers?": {
+        "description": "Is asking for volunteers enabled on this site?"
+      },
+      "ask_for_mobiles?": {
+        "description": "Ask for mobile numbers whenever possible"
+      },
+      "ask_to_publish_to_stream?": {
+        "description": "Is the checkbox for asking people if they want to keep their form submissions turned on?"
+      },
+      "show_public_profiles?": {
+        "description": "Are public profiles turned on?"
+      },
+      "show_parent_in_nav_dropdown?": {
+        "description": "Include the parent page in the nav menu dropdowns"
+      },
+      "is_homepage?": {
+        "description": "Are you currently on the homepage?",
+        "example": "e.g. {% if site.is_homepage? %}"
+      },
+      "homepage": {
+        "description": "Home page, a page object",
+        "example": "e.g. {{ site.homepage.url }}",
+        "type": "page"
+      },
+      "has_button1?": {
+        "description": "Is there a big button #1?",
+        "example": "e.g. {% if site.has_button1? %}"
+      },
+      "button1_text": {
+        "description": "Text for the first button",
+        "example": "e.g. {{ site.button1_text }}"
+      },
+      "button1_page": {
+        "description": "Page to link to for the first button",
+        "example": "e.g. {{ site.button1_page.url }}",
+        "type": "page"
+      },
+      "has_button2?": {
+        "description": "Is there a big button #2?",
+        "example": "e.g. {% if site.has_button2? %}"
+      },
+      "button2_text": {
+        "description": "Text for the first button",
+        "example": "e.g. {{ site.button2_text }}"
+      },
+      "button2_page": {
+        "description": "Page to link to for the second button",
+        "example": "e.g. {{ site.button2_page.url }}",
+        "type": "page"
+      },
+      "has_button3?": {
+        "description": "Is there a big button #3?",
+        "example": "e.g. {% if site.has_button3? %}"
+      },
+      "button3_text": {
+        "description": "Text for the third button",
+        "example": "e.g. {{ site.button3_text }}"
+      },
+      "button3_page": {
+        "description": "Page to link to for the third button",
+        "example": "e.g. {{ site.button3_page.url }}",
+        "type": "page"
+      },
+      "has_donation_page?": {
+        "description": "Is there a primary donation page?",
+        "example": "e.g. {% if site.has_donation_page? %}"
+      },
+      "donation_page": {
+        "description": "Primary donation page",
+        "example": "e.g. {{ site.donation_page }}",
+        "type": "page"
+      },
+      "has_membership_page?": {
+        "description": "Is there a primary membership page?",
+        "example": "e.g. {% if site.has_membership_page? %}"
+      },
+      "has_volunteer_page?": {
+        "description": "Is there a primary volunteer page?",
+        "example": "e.g. {% if site.has_volunteer_page? %}"
+      },
+      "volunteer_page": {
+        "description": "Primary volunteer page",
+        "example": "e.g. {{ site.volunteer_page.url }}",
+        "type": "page"
+      },
+      "has_rule_page?": {
+        "description": "Is there a rules page?",
+        "example": "e.g. {{ site.has_rule_page? }}"
+      },
+      "rule_page": {
+        "description": "Rules page",
+        "example": "e.g. {{ site.rule_page }}",
+        "type": "page"
+      },
+      "has_friends_page?": {
+        "description": "Is there a primary find friends page?",
+        "example": "e.g. {% if site.has_friends_page? %}"
+      },
+      "friends_page": {
+        "description": "Primary find a friends page",
+        "example": "e.g. {{ site.friends_page.url }}",
+        "type": "page"
+      },
+      "has_splash_page?": {
+        "description": "Is there a splash page?",
+        "example": "e.g. {% if site.has_splash_page? %}"
+      },
+      "splash_page": {
+        "description": "Splash page for this site (optional)",
+        "example": "e.g. {{ site.splash_page.url }}",
+        "type": "page"
+      },
+      "has_signup_page?": {
+        "description": "Is there a signup page?",
+        "example": "e.g. {% if site.has_signup_page? %}"
+      },
+      "signup_page": {
+        "description": "Signup page for this site",
+        "example": "e.g. {{ site.signup_page.url }}",
+        "type": "page"
+      },
+      "has_invoice_page?": {
+        "description": "Is there a primary invoices page?",
+        "example": "e.g. {% if site.has_invoice_page? %}"
+      },
+      "invoice_page": {
+        "description": "Primary invoices page",
+        "example": "e.g. {{ site.invoice_page.url }}",
+        "type": "page"
+      },
+      "has_broadcaster?": {
+        "description": "Is there an official broadcaster for this site",
+        "example": "e.g. {% if site.has_broadcaster? %}"
+      },
+      "broadcaster": {
+        "description": "Official broadcaster for this site",
+        "type": "page"
+      },
+      "has_facebook?": {
+        "description": "Is there an official facebook or open graph page?",
+        "example": "e.g. {% if site.has_facebook? %}"
+      },
+      "has_facebook_page?": {
+        "description": "Is there an official facebook page?",
+        "example": "e.g. {% if site.has_facebook_page? %}"
+      },
+      "is_facebook_like_dark?": {
+        "description": "Is the Facebook like button set to dark (for darker themes)"
+      },
+      "facebook_colorscheme": {
+        "description": "Facebook color scheme variable"
+      },
+      "open_graph_broadcaster": {
+        "description": "The broadcaster who uses this site as their homepage",
+        "example": "e.g. {{ site.open_graph_broadcaster.open_graph_type }}",
+        "type": "page"
+      },
+      "has_meta_image?": {
+        "description": "Does the site have a primary image?"
+      },
+      "meta_image_url": {
+        "description": "Logo used by Facebook share/digg/etc.",
+        "example": "e.g. <img src=\"{{ site.meta_image_url }}\" />"
+      },
+      "meta_image_medium_url": {
+        "description": "Image used by Facebook share/digg/etc.",
+        "example": "e.g. <img src=\"{{ site.meta_image_medium_url }}\" />"
+      },
+      "meta_image_large_url": {
+        "description": "Image used by Facebook share/digg/etc.",
+        "example": "e.g. <img src=\"{{ site.meta_image_large_url }}\" />"
+      },
+      "has_header_image?": {
+        "description": "Does the site have a header image?"
+      },
+      "header_image_url_960": {
+        "description": "960px wide header image",
+        "example": "e.g. <img src=\"{{ site.header_image_url_960 }}\" />"
+      },
+      "header_image_url_980": {
+        "description": "980px wide header image",
+        "example": "e.g. <img src=\"{{ site.header_image_url_980 }}\" />"
+      },
+      "header_image_url_1026": {
+        "description": "1026px wide header image",
+        "example": "e.g. <img src=\"{{ site.header_image_url_1026 }}\" />"
+      },
+      "header_image_url_2048": {
+        "description": "2048px wide header image",
+        "example": "e.g. <img src=\"{{ site.header_image_url_2048 }}\" />"
+      },
+      "has_background_image?": {
+        "description": "Does the site have a background image? (used by some themes)"
+      },
+      "background_image_url": {
+        "example": "e.g. <img src=\"{{ site.background_image_url }}\" />"
+      },
+      "footer_content": {
+        "description": "Content for footer",
+        "example": "e.g. {{ site.footer_content }}"
+      },
+      "activities": {
+        "description": "A paginated array of the 20 most recent public activity objects for the entire nation"
+      },
+      "root_nav_pages": {
+        "description": "All the pages in the main nav",
+        "example": "e.g. <![CDATA[ <div class=\"nav_container\"> <div class=\"navbg\"> <ul id=\"topnav\"> {% for child in site.root_nav_pages %} {% if child.leaf? %} {% if child.is_or_is_ancestor_of_current_page? %}<li class=\"active{% if forloop.first %}_left{% endif %}\">{% else %}<li class=\"nodrop\">{% endif %} <a href=\"{{ child.url }}\">{{ child.name }}</a> </li> {% else %} {% if child.is_or_is_ancestor_of_current_page? %}<li class=\"active_drop{% if forloop.first %}_left{% endif %}\">{% else %}<li class=\"drop\">{% endif %} <a href=\"{{ child.url }}\">{{ child.name }}</a> <div class=\"sub\"> <ul> {% for child2 in child.children %} <li><a href=\"{{ child2.url }}\">{{ child2.name }}</a></li> {% endfor %} </ul> </div> </li> {% endif %} {% endfor %} </ul> <div style=\"clear: both;\"></div> </div> </div> ]]>"
+      },
+      "root_nav_pages_reversed": {
+        "description": "Same as previous, just in reverse order"
+      },
+      "supporter_pages": {
+        "description": "All the pages in the supporter nav",
+        "example": "e.g. <![CDATA[ {% for child in site.supporter_pages %} <li{% if page == child %} class=\"on\"{% endif %}><a href=\"{{ child.url }}\">{{ \"fugue-dashboard\" | icon }} {{ child.name }}</a></li> {% endfor %} ]]>"
+      },
+      "most_recent_pages": {
+        "description": "A paginated array of the 20 most recently published page"
+      },
+      "most_recent_petition_pages": {
+        "description": "A paginated array of the 20 most recently published petition pages"
+      },
+      "most_recent_endorsement_pages": {
+        "description": "A paginated array of the 20 most recently published endorsement pages"
+      },
+      "most_recent_blog_post_pages": {
+        "description": "A paginated array of the 20 most recently published blog post pages"
+      },
+      "most_recent_suggestion_pages": {
+        "description": "A paginated array of the 20 most recently published suggestion pages"
+      },
+      "most_recent_faq_pages": {
+        "description": "A paginated array of the 20 most recently published faq pages"
+      },
+      "most_recent_question_pages": {
+        "description": "A paginated array of the 20 most recently published question pages"
+      },
+      "most_recent_press_release_pages": {
+        "description": "A paginated array of the 20 most recently published press release pages"
+      },
+      "most_recent_survey_pages": {
+        "description": "A paginated array of the 20 most recently published survey pages"
+      },
+      "upcoming_event_pages": {
+        "description": "A paginated array of 20 upcoming event pages"
+      },
+      "recent_supporters": {
+        "description": "A list of recent supporters by name",
+        "example": "e.g. {{ site.recent_supporters }}"
+      },
+      "recent_supporters_with_pictures": {
+        "description": "A list of recent supporters by picture",
+        "example": "e.g. {{ site.recent_supporters_with_pictures }}"
+      },
+      "random_supporters": {
+        "description": "A randomized list of 20 supporters",
+        "example": "e.g. {{ site.random_supporters }}"
+      },
+      "random_supporters_with_pictures": {
+        "description": "A randomized list of 20 supporters with pictures",
+        "example": "e.g. {{ site.random_supporters_with_pictures }}"
+      }
+    }
+  },
+  "survey_question": {
+    "slug": "survey_question_variables",
+    "title": "Survey question variables",
+    "properties": {
+      "content": {
+        "description": "Content of the survey question",
+        "example": "e.g. {{ survey.question.content }}"
+      },
+      "intro": {
+        "description": "Text to display before showing any of the possible responses",
+        "example": "e.g. {{ survey_question.intro }}"
+      },
+      "possible_responses": {
+        "description": "Possible responses to survey question",
+        "example": "e.g. {{ survey.question.possible_responses }}"
+      },
+      "is_multiple_choice?": {},
+      "is_yes_no?": {},
+      "is_text?": {}
+    }
+  },
+  "survey_question_possible_response": {
+    "slug": "survey_question_possible_response_variables",
+    "title": "Survey question possible response variables",
+    "properties": {
+      "name": {
+        "description": "Name of the survey question response",
+        "example": "e.g. {{ survey_question_possible_response.name }}"
+      },
+      "radio_button": {
+        "description": "Radio button for survey question response",
+        "example": "e.g. {{ survey_question_possible_response.radio_button }}"
+      },
+      "outro": {
+        "description": "Text to display on the following page if a person selected this response",
+        "example": "e.g. {{ survey_question_possible_response.outro }}"
+      }
+    }
+  },
+  "survey_question_response": {
+    "slug": "survey_question_response_variables",
+    "title": "Survey question response variables",
+    "properties": {
+      "response": {
+        "description": "Survey question response",
+        "example": "e.g. {{ survey_question_response.response }}"
+      },
+      "author": {
+        "description": "Author of the response",
+        "example": "e.g. {{ survey_question_response.author }}"
+      },
+      "signup": {}
+    }
+  },
+  "tweet": {
+    "slug": "tweet_variables",
+    "title": "Tweet variables",
+    "properties": {
+      "signup": {},
+      "content": {
+        "description": "Content of the tweet",
+        "example": "e.g. {{ tweet.content }}"
+      },
+      "tweet_id": {
+        "description": "Tweet id",
+        "example": "e.g. {{ tweet.tweet_id }}"
+      },
+      "twitter_id": {
+        "description": "Twitter account id",
+        "example": "e.g. {{ tweet.twitter_id }}"
+      },
+      "is_follow": {}
+    }
+  },
+  "twilio_phone": {
+    "slug": "twilio_phone_variables",
+    "title": "Twilio phone variables",
+    "properties": {
+      "number": {
+        "description": "Phone number, unformatted",
+        "example": "e.g. 18005551212"
+      },
+      "number_formatted": {
+        "description": "Phone number, formatted",
+        "example": "e.g. 1-800-555-1212"
+      },
+      "name": {
+        "description": "Name associated with number",
+        "example": "e.g. {{ twilio_phone.name }}"
+      },
+      "sid": {},
+      "admin_url": {
+        "description": "URL to admin page for number",
+        "example": "e.g. {{ twilio_phone.admin_url }}"
+      }
+    }
+  },
+  "unsubscribe": {
+    "slug": "unsubscribe_variables",
+    "title": "Unsubscribe variables",
+    "properties": {
+      "email": {
+        "description": "Email input field in unsubscribe form",
+        "example": "e.g. <![CDATA[ <p><label for=\"email\">Choose your password</label><br>{% text_field \"email\", class:\"text\" %}</p> ]]>"
+      }
+    }
+  },
+  "user_session": {
+    "slug": "user_session_variables",
+    "title": "User session variables",
+    "properties": {
+      "email": {
+        "description": "Email input field",
+        "example": "e.g. <![CDATA[ {% text_field \"email\", class:\"text\" %} ]]>"
+      },
+      "password": {
+        "description": "Password input field",
+        "example": "e.g. <![CDATA[ {% password_field \"password\", class:\"text\" %} ]]>"
+      },
+      "remember_me": {
+        "description": "Remember me checkbox",
+        "example": "e.g. <![CDATA[ {% check_box \"remember_me\", class:\"checkbox\" %} Remember me ]]>"
+      },
+      "new_account_url": {
+        "description": "URL to create a new account",
+        "example": "e.g. {{ user_session.new_account_url }}"
+      },
+      "new_password_reset_url": {
+        "description": "URL to reset password",
+        "example": "e.g. {{ user_session.new_password_reset_url }}"
+      }
+    }
+  },
+  "volunteer": {
+    "slug": "volunteer_variables",
+    "title": "Volunteer variables",
+    "properties": {
+      "signup": {
+        "description": "Attaching signup to volunteer form",
+        "example": "e.g. <![CDATA[ {% form_for volunteer_signup %} ]]>"
+      },
+      "volunteer_type": {
+        "description": "Types of volunteering",
+        "example": "e.g. <![CDATA[ {% for volunteer_type in page.volunteer_signup.volunteer_types %} ]]>"
+      }
+    }
+  },
+  "volunteer_type": {
+    "slug": "volunteer_type_variables",
+    "title": "Volunteer type variables",
+    "properties": {
+      "name": {
+        "description": "Name of the volunteer type",
+        "example": "e.g. Phone banking, canvassing, etc."
+      }
+    }
+  },
+  "vote_pledge": {
+    "slug": "vote_pledge_variables",
+    "title": "Vote pledge variables",
+    "properties": {
+      "signup": {
+        "description": "The person who made the pledge",
+        "example": "e.g. {{ vote_pledge.signup.published_name }}",
+        "type": "signup"
+      },
+      "content": {
+        "description": "Text field for user comment after they pledge",
+        "example": "e.g. {{ vote_pledge.content }}"
+      },
+      "is_yes?": {
+        "description": "Checks if the user pledged yes",
+        "example": "e.g. {% if vote_pledge.is_yes? %}"
+      },
+      "is_unsure?": {
+        "description": "Checks if the user pledged unsure",
+        "example": "e.g. {% if vote_pledge.is_unsure? %}"
+      },
+      "is_no?": {
+        "description": "Checks if the user pledged no",
+        "example": "e.g. {% if vote_pledge.is_no? %}"
+      },
+      "is_private": {
+        "description": "Checkbox to prevent publishing pledge on the website",
+        "example": "e.g. <![CDATA[ <label for=\"vote_pledge_is_private\">{% check_box \"is_private\", class:\"checkbox\" %} Dont publish this on the website</label> ]]>"
+      },
+      "is_private?": {
+        "description": "Checks if the pledge is private",
+        "example": "e.g. {% if vote_pledge.is_private? %}"
+      },
+      "created_at": {
+        "description": "When pledged",
+        "example": "e.g. {{ vote_pledge.created_at | time_ago }}"
+      }
+    }
+  }
+}

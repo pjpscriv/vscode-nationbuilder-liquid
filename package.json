@@ -2,7 +2,7 @@
   "name": "vscode-nationbuilder-liquid",
   "displayName": "NationBuilder Liquid",
   "description": "Go-to-definition and find-usages navigation for {% include %}, {% subpage %}, and {% tag %} tags in a NationBuilder theme codebase.",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "publisher": "pjpscriv",
   "icon": "docs/logo-256.png",
   "license": "MIT",
@@ -29,7 +29,7 @@
   "activationEvents": [
     "onLanguage:liquid"
   ],
-  "main": "./out/extension.js",
+  "main": "./out/extension/extension.js",
   "contributes": {
     "languages": []
   },
@@ -40,7 +40,8 @@
     "pretest": "npm run compile && npm run lint",
     "lint": "eslint src",
     "test": "vscode-test",
-    "package": "npx vsce package"
+    "package": "npx vsce package",
+    "scrape-objects": "node scripts/scrape-liquid-objects.mjs"
   },
   "devDependencies": {
     "@types/mocha": "^10.0.10",
@@ -49,6 +50,7 @@
     "@vscode/test-cli": "^0.0.12",
     "@vscode/test-electron": "^2.5.2",
     "@vscode/vsce": "^3.0.0",
+    "cheerio": "^1.2.0",
     "eslint": "^9.39.3",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.56.1"

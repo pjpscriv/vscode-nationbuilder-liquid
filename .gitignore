@@ -4,6 +4,7 @@ node_modules
 .vscode-test/
 *.vsix
 package-lock.json
+.tmp/
 
 # Starter documentation
 vsc-extension-quickstart.md
